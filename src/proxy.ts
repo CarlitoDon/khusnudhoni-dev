@@ -25,13 +25,7 @@ export function proxy(request: NextRequest) {
   }
 
   if (host === ROOT_HOST || host === WWW_HOST) {
-    if (pathname === "/services") {
-      return NextResponse.next();
-    }
-
-    const url = request.nextUrl.clone();
-    url.pathname = "/services";
-    return NextResponse.rewrite(url);
+    return NextResponse.next();
   }
 
   if (host === DEV_HOST && !pathname.startsWith("/dev")) {
