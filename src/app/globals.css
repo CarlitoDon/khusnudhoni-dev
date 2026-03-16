@@ -27,9 +27,10 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans), "Sora", "Segoe UI", sans-serif;
   margin: 0;
-  min-height: 100dvh;
+  min-height: 100svh;
   position: relative;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -331,7 +332,8 @@ html {
 @media (max-width: 640px) {
   .glow-orb {
     opacity: 0.28;
-    filter: blur(72px);
+    filter: blur(56px);
+    animation: none;
   }
 
   .glow-orb-1 {
@@ -350,6 +352,20 @@ html {
 
   .liquid-nav-shell {
     max-width: calc(100vw - 1rem);
+  }
+
+  .liquid-nav {
+    backdrop-filter: blur(16px) saturate(160%) brightness(1.04);
+    -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(1.04);
+  }
+
+  .liquid-pill {
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+  }
+
+  .data-bg {
+    background-size: 36px 36px;
   }
 
   .bento-card:hover {
