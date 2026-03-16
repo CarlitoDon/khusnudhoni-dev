@@ -32,6 +32,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 /* Cyberpunk Data Grid Background */
 .data-bg {
   position: absolute;
@@ -325,6 +329,25 @@ body {
 }
 
 @media (max-width: 640px) {
+  .glow-orb {
+    opacity: 0.28;
+    filter: blur(72px);
+  }
+
+  .glow-orb-1 {
+    width: 280px;
+    height: 280px;
+    top: -70px;
+    left: -80px;
+  }
+
+  .glow-orb-2 {
+    width: 340px;
+    height: 340px;
+    right: -120px;
+    bottom: -140px;
+  }
+
   .liquid-nav-shell {
     max-width: calc(100vw - 1rem);
   }
