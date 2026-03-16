@@ -497,6 +497,10 @@ html {
     transform: none !important;
   }
 
+  .animate-enter {
+    opacity: 1 !important;
+  }
+
   .bento-card,
   .tech-chip {
     transition: none !important;
