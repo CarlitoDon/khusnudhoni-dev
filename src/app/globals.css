@@ -324,6 +324,22 @@ body {
     0 0 0 1px rgba(37, 99, 235, 0.18);
 }
 
+@media (max-width: 640px) {
+  .liquid-nav-shell {
+    max-width: calc(100vw - 1rem);
+  }
+
+  .bento-card:hover {
+    transform: none;
+  }
+
+  .tech-chip {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.65rem;
+    letter-spacing: 0.03em;
+  }
+}
+
 @supports not (
   (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
 ) {

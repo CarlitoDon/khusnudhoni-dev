@@ -7,15 +7,23 @@ type SiteNavbarProps = {
 
 export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8 lg:px-10 pointer-events-none">
-      <nav className="liquid-nav liquid-nav-shell pointer-events-auto mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-7 lg:px-8">
+    <div className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-8 lg:px-10 pointer-events-none">
+      <nav className="liquid-nav liquid-nav-shell pointer-events-auto mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-7 sm:py-3 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 font-mono text-sm font-bold tracking-widest text-black hover:text-blue-600 transition-colors"
+          className="flex items-center gap-2 font-mono text-[0.7rem] sm:text-sm font-bold tracking-[0.12em] text-black hover:text-blue-600 transition-colors"
         >
           <div className="h-2 w-2 bg-blue-600 rounded-full animate-pulse"></div>
-          {SITE_PROFILE.name.toUpperCase()}
+          <span className="sm:hidden">KHUSNU</span>
+          <span className="hidden sm:inline">{SITE_PROFILE.name.toUpperCase()}</span>
         </Link>
+
+        <a
+          href={`mailto:${SITE_PROFILE.email}`}
+          className="sm:hidden liquid-pill text-black hover:text-blue-700 px-3 py-1 rounded-full transition-all font-mono text-[0.65rem] font-semibold tracking-wider"
+        >
+          Contact
+        </a>
 
         <div className="hidden sm:flex items-center gap-6 font-mono text-xs text-black font-semibold">
           {NAV_SECTIONS.map((section) => (
