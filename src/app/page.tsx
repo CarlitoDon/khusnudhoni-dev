@@ -34,7 +34,7 @@ export default function Home() {
         <BackgroundLayer />
         <SiteNavbar />
 
-        <div className="mx-auto max-w-6xl px-4 pb-20 pt-24 sm:px-10 sm:pt-32 lg:px-14">
+        <div className="mx-auto max-w-6xl px-4 pb-20 pt-32 sm:px-10 sm:pt-32 lg:px-14">
           {/* Header Section */}
           <header className="mb-16 sm:mb-24 flex flex-col items-start gap-5 sm:gap-6 animate-enter">
             <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.62rem] sm:text-[0.75rem] uppercase tracking-wider text-blue-700">
@@ -78,7 +78,7 @@ export default function Home() {
           </header>
 
           {/* Profil / About Section */}
-          <section id="about" className="mb-16 sm:mb-24 scroll-mt-24 animate-enter delay-100">
+          <section id="about" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24 animate-enter delay-100">
             <h2 className="mb-4 text-sm font-mono tracking-widest text-black uppercase">
               [ 00_Who_Am_I ]
             </h2>
@@ -134,7 +134,7 @@ export default function Home() {
             </GlassPanel>
           </section>
 
-          <section id="services" className="mb-16 sm:mb-24 scroll-mt-24">
+          <section id="services" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24">
             <h2 className="mb-4 text-sm font-mono tracking-widest text-black uppercase animate-enter delay-150">
               [ 00.5_Services ]
             </h2>
@@ -158,7 +158,7 @@ export default function Home() {
           </section>
 
           {/* Case Studies Bento Grid */}
-          <section id="cases" className="mb-16 sm:mb-24 scroll-mt-24">
+          <section id="cases" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24">
             <h2 className="mb-4 text-sm font-mono tracking-widest text-black uppercase animate-enter delay-200">
               [ 01_Case_Studies ]
             </h2>
@@ -198,7 +198,7 @@ export default function Home() {
           </section>
 
           {/* Infrastructure Toolkit */}
-          <section id="stack" className="animate-enter delay-300 scroll-mt-24">
+          <section id="stack" className="animate-enter delay-300 scroll-mt-32 sm:scroll-mt-24">
             <h2 className="mb-6 text-sm font-mono tracking-widest text-black uppercase">
               [ 02_Growth_Stack ]
             </h2>
