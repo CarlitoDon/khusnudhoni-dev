@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import { SITE_PROFILE } from "@/data/site";
 import { BackdropCapabilityProbe } from "@/components/BackdropCapabilityProbe";
+import { ScrollBehaviorFix } from "@/components/ScrollBehaviorFix";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -68,6 +69,7 @@ export default function RootLayout({
     <html lang="id">
       <body className={`${sora.variable} ${ibmPlexMono.variable} antialiased`}>
         <BackdropCapabilityProbe />
+        <ScrollBehaviorFix />
         {children}
       </body>
     </html>
