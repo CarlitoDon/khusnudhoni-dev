@@ -7,7 +7,7 @@ type SiteNavbarProps = {
 
 export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
   return (
-    <div className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-8 lg:px-10 pointer-events-none">
+    <div className="sticky top-0 z-50 px-3 pt-3 sm:px-8 lg:px-10 pointer-events-none">
       <nav className="liquid-nav liquid-nav-shell pointer-events-none mx-auto flex max-w-6xl flex-col gap-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-3 lg:px-8">
         <div className="flex w-full items-center justify-between sm:w-auto">
           <Link
@@ -19,7 +19,9 @@ export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
           </Link>
 
           <a
-            href={`mailto:${SITE_PROFILE.email}`}
+            href={SITE_PROFILE.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
             className="pointer-events-auto liquid-pill text-black hover:text-blue-700 px-3 py-1 rounded-full transition-all font-mono text-[0.64rem] sm:text-[0.68rem] font-semibold tracking-wider sm:hidden"
           >
             Contact
@@ -50,7 +52,9 @@ export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
           ))}
 
           <a
-            href={`mailto:${SITE_PROFILE.email}`}
+            href={SITE_PROFILE.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
             className="pointer-events-auto liquid-pill text-black hover:text-blue-700 px-4 py-1.5 rounded-full transition-all"
           >
             Contact

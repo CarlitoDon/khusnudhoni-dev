@@ -1,4 +1,4 @@
-import { ArrowRight, Code2, Linkedin, Mail, Server } from "lucide-react";
+import { ArrowRight, Code2, Linkedin, MessageCircle, Server } from "lucide-react";
 import { BackgroundLayer } from "@/components/BackgroundLayer";
 import { GlassButton } from "@/components/GlassButton";
 import { GlassPanel } from "@/components/GlassPanel";
@@ -49,11 +49,13 @@ export default function DevHomePage() {
             <div className="mt-4 flex flex-wrap items-center gap-4">
               <GlassButton
                 className="group"
-                href={`mailto:${SITE_PROFILE.email}`}
+                href={SITE_PROFILE.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
                 variant="primary"
               >
-                <Mail className="mr-2 h-4 w-4" />
-                Discuss a Dev Project
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Discuss via WhatsApp
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </GlassButton>
               <GlassButton
@@ -64,6 +66,18 @@ export default function DevHomePage() {
                 <Linkedin className="mr-2 h-4 w-4" />
                 LinkedIn Profile
               </GlassButton>
+            </div>
+
+            <div className="w-full sm:w-auto rounded-2xl border border-white/70 bg-white/60 px-4 py-3 backdrop-blur-sm">
+              <p className="font-mono text-[0.62rem] sm:text-[0.7rem] uppercase tracking-wider text-blue-700">
+                Prefer email for technical scope?
+              </p>
+              <a
+                href={`mailto:${SITE_PROFILE.email}`}
+                className="mt-1 inline-block font-mono text-xs sm:text-sm text-black underline decoration-blue-500/60 underline-offset-4 hover:text-blue-700 transition-colors"
+              >
+                {SITE_PROFILE.email}
+              </a>
             </div>
           </header>
 
@@ -85,7 +99,7 @@ export default function DevHomePage() {
                   ))}
                 </div>
 
-                <div className="hidden lg:block w-[1px] bg-gray-200 self-stretch" />
+                <div className="hidden lg:block w-px bg-gray-200 self-stretch" />
 
                 <div className="w-full lg:w-64 flex flex-col gap-5 text-sm">
                   <div>

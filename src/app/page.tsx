@@ -1,4 +1,4 @@
-import { Mail, Linkedin, ArrowRight, TrendingUp } from "lucide-react";
+import { MessageCircle, Linkedin, ArrowRight, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { caseStudies } from "@/data/cases";
 import { BackgroundLayer } from "@/components/BackgroundLayer";
@@ -30,11 +30,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="relative min-h-screen z-0">
+      <main className="relative min-h-full z-0">
         <BackgroundLayer />
         <SiteNavbar />
 
-        <div className="mx-auto max-w-6xl px-4 pb-20 pt-32 sm:px-10 sm:pt-32 lg:px-14">
+        <div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-10 sm:pt-20 lg:px-14">
           {/* Header Section */}
           <header className="mb-16 sm:mb-24 flex flex-col items-start gap-5 sm:gap-6 animate-enter">
             <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.62rem] sm:text-[0.75rem] uppercase tracking-wider text-blue-700">
@@ -58,11 +58,13 @@ export default function Home() {
             <div className="mt-3 flex w-full flex-col sm:w-auto sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
               <GlassButton
                 className="group justify-center"
-                href={`mailto:${SITE_PROFILE.email}`}
+                href={SITE_PROFILE.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
                 variant="primary"
               >
-                <Mail className="mr-2 h-4 w-4" />
-                Let&apos;s Collaborate
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Chat via WhatsApp
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </GlassButton>
               <GlassButton
@@ -74,6 +76,18 @@ export default function Home() {
                 <Linkedin className="mr-2 h-4 w-4" />
                 LinkedIn Profile
               </GlassButton>
+            </div>
+
+            <div className="w-full sm:w-auto rounded-2xl border border-white/70 bg-white/60 px-4 py-3 backdrop-blur-sm">
+              <p className="font-mono text-[0.62rem] sm:text-[0.7rem] uppercase tracking-wider text-blue-700">
+                Prefer email for detailed brief?
+              </p>
+              <a
+                href={`mailto:${SITE_PROFILE.email}`}
+                className="mt-1 inline-block font-mono text-xs sm:text-sm text-black underline decoration-blue-500/60 underline-offset-4 hover:text-blue-700 transition-colors"
+              >
+                {SITE_PROFILE.email}
+              </a>
             </div>
           </header>
 
@@ -104,7 +118,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="hidden lg:block w-[1px] bg-gray-200 self-stretch" />
+                <div className="hidden lg:block w-px bg-gray-200 self-stretch" />
 
                 <div className="w-full lg:w-64 flex flex-col gap-4 sm:gap-5 text-sm">
                   <div>
