@@ -1,4 +1,4 @@
-import { Fingerprint, Target, Settings, BrainCircuit, BarChart, Database, LayoutTemplate, Layers, Braces, Terminal, Search } from "lucide-react";
+import { Fingerprint, Target, Settings, BrainCircuit, BarChart, Database, LayoutTemplate, Layers, Braces, Terminal, Search, ShoppingBag } from "lucide-react";
 import React from "react";
 
 export type StackItem = {
@@ -12,7 +12,8 @@ export const growthStackCategory = [
     items: [
       { name: "Meta Ads", icon: Target },
       { name: "Google Ads", icon: Search },
-      { name: "TikTok Ads", icon: Fingerprint }
+      { name: "TikTok Ads", icon: Fingerprint },
+      { name: "Shopee Ads", icon: ShoppingBag }
     ] as StackItem[]
   },
   {

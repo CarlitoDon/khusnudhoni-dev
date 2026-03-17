@@ -31,7 +31,7 @@ export function ContactButton({ isHero }: ContactButtonProps) {
     <button
       onClick={openModal}
       type="button"
-      className="pointer-events-auto cursor-pointer liquid-pill text-black dark:text-blue-900 hover:text-blue-700 dark:hover:text-blue-800 px-3 sm:px-4 py-1.5 sm:py-1.5 rounded-full transition-all font-mono text-[0.64rem] sm:text-[0.68rem] font-semibold tracking-wider shrink-0 whitespace-nowrap"
+      className="pointer-events-auto cursor-pointer liquid-pill text-black dark:text-blue-300 hover:text-blue-700 dark:hover:text-blue-200 px-3 sm:px-4 py-1.5 sm:py-1.5 rounded-full transition-all font-mono text-[0.64rem] sm:text-[0.68rem] font-semibold tracking-wider shrink-0 whitespace-nowrap"
     >
       Contact
     </button>

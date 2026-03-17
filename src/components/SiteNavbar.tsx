@@ -17,7 +17,7 @@ export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
 
   return (
     <div className="sticky top-0 z-50 px-3 pt-3 sm:px-8 lg:px-10 pointer-events-none">
-      <nav className="liquid-nav liquid-nav-shell pointer-events-none mx-auto flex max-w-6xl flex-col gap-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-3 lg:px-8">
+      <nav className="liquid-nav liquid-nav-shell rounded-[1.25rem] sm:rounded-full pointer-events-none mx-auto flex max-w-6xl flex-col gap-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-3 lg:px-8">
         <div className="flex w-full items-center justify-between sm:w-auto relative z-50">
           <Link
             href="/"
