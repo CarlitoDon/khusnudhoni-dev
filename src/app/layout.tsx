@@ -4,6 +4,8 @@ import "./globals.css";
 import { SITE_PROFILE } from "@/data/site";
 import { BackdropCapabilityProbe } from "@/components/BackdropCapabilityProbe";
 import { ScrollBehaviorFix } from "@/components/ScrollBehaviorFix";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ContactModalProvider } from "@/components/ContactModalProvider";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -66,11 +68,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
       <body className={`${sora.variable} ${ibmPlexMono.variable} antialiased`}>
-        <BackdropCapabilityProbe />
-        <ScrollBehaviorFix />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ContactModalProvider>
+            <BackdropCapabilityProbe />
+            <ScrollBehaviorFix />
+            {children}
+          </ContactModalProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

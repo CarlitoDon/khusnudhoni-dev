@@ -57,24 +57,24 @@ export default async function CaseStudyPage(props: {
             >
               <ArrowLeft className="mr-2 h-4 w-4" /> [ BACK_TO_LIST ]
             </Link>
-            <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black mb-4">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-slate-900 dark:text-white mb-4">
               {caseStudy.title}
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-8 border-y border-gray-300 py-6">
               <div className="flex-1">
-                <span className="font-mono text-[0.65rem] text-black uppercase tracking-widest block mb-2">
+                <span className="font-mono text-[0.65rem] text-slate-800 dark:text-slate-200 uppercase tracking-widest block mb-2">
                   Context
                 </span>
-                <p className="text-black text-sm leading-relaxed">
+                <p className="text-slate-800 dark:text-slate-200 text-sm leading-relaxed">
                   {caseStudy.context}
                 </p>
               </div>
               <div className="w-px bg-gray-200 hidden sm:block"></div>
               <div className="flex-1">
-                <span className="font-mono text-[0.65rem] text-black uppercase tracking-widest block mb-2">
+                <span className="font-mono text-[0.65rem] text-slate-800 dark:text-slate-200 uppercase tracking-widest block mb-2">
                   My Role
                 </span>
-                <p className="text-black text-sm font-medium leading-relaxed">
+                <p className="text-slate-800 dark:text-slate-200 text-sm font-medium leading-relaxed">
                   {caseStudy.role}
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default async function CaseStudyPage(props: {
             </div>
           </div>
 
-          <HiddenImpactSection results={caseStudy.results} />
+          <HiddenImpactSection results={caseStudy.results} metrics={caseStudy.metrics} />
         </GlassPanel>
       </div>
     </main>
