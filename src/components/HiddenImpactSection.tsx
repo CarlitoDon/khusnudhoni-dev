@@ -2,8 +2,15 @@
 
 import { useState } from "react";
 import { TrendingUp, Eye } from "lucide-react";
+import { AnimatedCounter } from "./AnimatedCounter";
 
-export function HiddenImpactSection({ results }: { results: string[] }) {
+export function HiddenImpactSection({ 
+  results, 
+  metrics 
+}: { 
+  results: string[];
+  metrics?: { value: number; prefix?: string; suffix?: string; label: string }[];
+}) {
   const [isRevealed, setIsRevealed] = useState(false);
 
   return (
@@ -13,6 +20,26 @@ export function HiddenImpactSection({ results }: { results: string[] }) {
       </span>
       
       <div className={`relative transition-all duration-700 ${!isRevealed ? "blur-[6px] opacity-40 select-none" : "blur-none opacity-100"}`}>
+        
+        {metrics && metrics.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {metrics.map((metric, idx) => (
+              <div key={idx} className="bg-white/50 border border-green-100/50 rounded-xl p-5 flex flex-col justify-center items-start shadow-sm">
+                <div className="flex items-baseline text-2xl sm:text-3xl font-bold text-green-700 mb-1">
+                  <AnimatedCounter 
+                    value={isRevealed ? metric.value : 0} 
+                    prefix={metric.prefix} 
+                    suffix={metric.suffix} 
+                  />
+                </div>
+                <div className="text-xs font-mono uppercase tracking-wider text-green-800/70">
+                  {metric.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         <ul className="result-list text-black text-base font-medium leading-relaxed space-y-4">
           {results.map((item) => (
             <li key={item}>{item}</li>
@@ -35,3 +62,4 @@ export function HiddenImpactSection({ results }: { results: string[] }) {
     </div>
   );
 }
+

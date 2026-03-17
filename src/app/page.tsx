@@ -7,8 +7,11 @@ import { GlassPanel } from "@/components/GlassPanel";
 import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SITE_PROFILE } from "@/data/site";
-import { growthStack } from "@/data/growth-stack";
+import { growthStackCategory, growthStack } from "@/data/growth-stack";
 import { services } from "@/data/services";
+import { TrustedBy } from "@/components/TrustedBy";
+import { WorkProcess } from "@/components/WorkProcess";
+import { ContactButton } from "@/components/ContactButton";
 
 export default function Home() {
   const jsonLd = {
@@ -56,17 +59,7 @@ export default function Home() {
             </p>
 
             <div className="mt-3 flex w-full flex-col sm:w-auto sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-              <GlassButton
-                className="group justify-center"
-                href={SITE_PROFILE.whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                variant="primary"
-              >
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Chat via WhatsApp
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </GlassButton>
+              <ContactButton isHero />
               <GlassButton
                 className="justify-center"
                 href={SITE_PROFILE.linkedInUrl}
@@ -90,6 +83,8 @@ export default function Home() {
               </a>
             </div>
           </header>
+
+          <TrustedBy />
 
           {/* Profil / About Section */}
           <section id="about" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24 animate-enter delay-100">
@@ -150,24 +145,10 @@ export default function Home() {
 
           <section id="services" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24">
             <h2 className="mb-4 text-sm font-mono tracking-widest text-black uppercase animate-enter delay-150">
-              [ 00.5_Services ]
+              [ 00.5_How_I_Build ]
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 animate-enter delay-200">
-              {services.map((service) => (
-                <GlassPanel key={service.title} className="p-5 sm:p-7 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-black text-sm md:text-base leading-relaxed mb-5">
-                    {service.summary}
-                  </p>
-                  <ul className="data-list text-sm md:text-base space-y-2">
-                    {service.outputs.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </GlassPanel>
-              ))}
+            <div className="animate-enter delay-200">
+              <WorkProcess />
             </div>
           </section>
 
@@ -218,11 +199,24 @@ export default function Home() {
             </h2>
             <InteractiveStackGlow>
               <GlassPanel className="magic-stack-card p-5 sm:p-8">
-                <div className="flex flex-wrap gap-3">
-                  {growthStack.map((tool) => (
-                    <span className="tech-chip" key={tool}>
-                      {tool}
-                    </span>
+                <div className="flex flex-col gap-6 sm:gap-8">
+                  {growthStackCategory.map((category) => (
+                    <div key={category.category}>
+                      <span className="font-mono text-xs text-blue-700 font-bold uppercase tracking-wider block mb-3 border-b border-blue-100 pb-2">
+                        {category.category}
+                      </span>
+                      <div className="flex flex-wrap gap-3">
+                        {category.items.map((tool) => {
+                          const Icon = tool.icon;
+                          return (
+                            <span className="tech-chip flex items-center gap-2" key={tool.name}>
+                              <Icon className="w-3.5 h-3.5 opacity-70" />
+                              {tool.name}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </GlassPanel>

@@ -105,7 +105,7 @@ export default async function CaseStudyPage(props: {
             </div>
           </div>
 
-          <HiddenImpactSection results={caseStudy.results} />
+          <HiddenImpactSection results={caseStudy.results} metrics={caseStudy.metrics} />
         </GlassPanel>
       </div>
     </main>

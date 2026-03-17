@@ -7,6 +7,7 @@ export type CaseStudy = {
   strategy: string[];
   tracking: string[];
   results: string[];
+  metrics?: { value: number; prefix?: string; suffix?: string; label: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -35,6 +36,10 @@ export const caseStudies: CaseStudy[] = [
       "Paid acquisition menjadi channel akuisisi konsisten",
       "Funnel visibility meningkat lewat tracking detail",
     ],
+    metrics: [
+      { prefix: "IDR ", value: 1, suffix: " B+", label: "Tambahan Revenue" },
+      { value: 12, suffix: " Bln", label: "Konsistensi Channel" },
+    ],
   },
   {
     slug: "santi-living",
@@ -60,6 +65,10 @@ export const caseStudies: CaseStudy[] = [
       "14 repeat customers di fase awal",
       "Membuktikan validasi demand awal bisnis melalui repeat order",
     ],
+    metrics: [
+      { prefix: "IDR ", value: 4, suffix: " Jt", label: "Rev Bulan 1" },
+      { value: 14, label: "Repeat Customers" },
+    ],
   },
   {
     slug: "kita-jago-digital",
@@ -84,6 +93,10 @@ export const caseStudies: CaseStudy[] = [
       "Scale revenue dari 0 -> IDR 40 juta/bulan dalam 3 bulan",
       "SOP terstruktur untuk tim marketing, CS acquisition, dan retention",
       "Monitoring performa tim lebih konsisten melalui dashboard internal",
+    ],
+    metrics: [
+      { prefix: "IDR ", value: 40, suffix: " Jt/bln", label: "Scale Revenue" },
+      { value: 3, suffix: " Bln", label: "Waktu Pencapaian" },
     ],
   },
 ];
