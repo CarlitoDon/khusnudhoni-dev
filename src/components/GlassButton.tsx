@@ -30,14 +30,14 @@ export function GlassButton({
 
   if (as === "button") {
     return (
-      <button {...props as any} className={classes}>
+      <button {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)} className={classes}>
         {children}
       </button>
     );
   }
 
   return (
-    <a {...props as any} className={classes}>
+    <a {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)} className={classes}>
       {children}
     </a>
   );

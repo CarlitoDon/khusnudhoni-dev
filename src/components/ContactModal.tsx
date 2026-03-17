@@ -55,7 +55,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </button>
 
         <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600 dark:from-blue-400 dark:to-indigo-300 mb-2">
-          Let's build something.
+          Let&apos;s build something.
         </h2>
         <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
           Isi form singkat ini agar saya bisa memberikan insight yang relevan dari awal kita chat.

@@ -1,4 +1,4 @@
-import { MessageCircle, Linkedin, ArrowRight, TrendingUp } from "lucide-react";
+import { Linkedin, ArrowRight, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { caseStudies } from "@/data/cases";
 import { BackgroundLayer } from "@/components/BackgroundLayer";
@@ -8,7 +8,6 @@ import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SITE_PROFILE } from "@/data/site";
 import { growthStackCategory, growthStack } from "@/data/growth-stack";
-import { services } from "@/data/services";
 import { TrustedBy } from "@/components/TrustedBy";
 import { WorkProcess } from "@/components/WorkProcess";
 import { ContactButton } from "@/components/ContactButton";
