@@ -181,14 +181,14 @@ export default function FullstackPage() {
               Engineering Business Growth
             </div>
 
-            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-black">
+            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-slate-100">
               Fullstack development partner for{" "}
               <span className="title-gradient font-extrabold italic pr-2">
                 business websites, dashboards, automations, integrations, ERP, and operations systems.
               </span>
             </h1>
 
-            <p className="max-w-2xl text-lg text-black leading-relaxed sm:text-xl">
+            <p className="max-w-2xl text-lg text-slate-900 dark:text-slate-100 leading-relaxed sm:text-xl">
               I build the technical engine that runs your business operations. From high-performance customer-facing sites to complex internal management systems.
             </p>
 
@@ -217,7 +217,7 @@ export default function FullstackPage() {
 
           {/* Outcomes Section */}
           <section id="outcomes" className="mb-24 scroll-mt-24 animate-enter delay-100">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 00_Expected_Outcomes ]
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -226,8 +226,8 @@ export default function FullstackPage() {
                   <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
                     <item.icon className="h-5 w-5 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-black">{item.title}</h3>
-                  <p className="text-black text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">{item.title}</h3>
+                  <p className="text-slate-900 dark:text-slate-100 text-sm leading-relaxed">{item.desc}</p>
                 </GlassPanel>
               ))}
             </div>
@@ -235,17 +235,17 @@ export default function FullstackPage() {
 
           {/* Services Section */}
           <section id="services" className="mb-24 scroll-mt-24">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 01_Services ]
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {fullstackServices.map((service) => (
                 <GlassPanel key={service.title} className="p-8">
-                  <h3 className="text-lg font-bold text-black mb-3">{service.title}</h3>
-                  <p className="text-black text-sm mb-4 leading-relaxed">{service.summary}</p>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-3">{service.title}</h3>
+                  <p className="text-slate-900 dark:text-slate-100 text-sm mb-4 leading-relaxed">{service.summary}</p>
                   <ul className="space-y-2">
                     {service.outputs.map((out) => (
-                      <li key={out} className="text-xs text-black flex items-start gap-2">
+                      <li key={out} className="text-xs text-slate-900 dark:text-slate-100 flex items-start gap-2">
                         <CheckCircle2 className="h-3 w-3 text-blue-500 mt-0.5" />
                         {out}
                       </li>
@@ -258,7 +258,7 @@ export default function FullstackPage() {
 
           {/* Stack Section */}
           <section id="stack" className="mb-24 scroll-mt-24">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 02_The_Stack ]
             </h2>
             <InteractiveStackGlow>
@@ -276,7 +276,7 @@ export default function FullstackPage() {
 
           {/* Proof Section */}
           <section id="cases" className="mb-24 scroll-mt-24">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 03_Proof from real engineering work ]
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -287,12 +287,12 @@ export default function FullstackPage() {
                 >
                   <div className="flex flex-col gap-2">
                     <span className="font-mono text-blue-700 font-bold text-xs">/project_{index + 1}</span>
-                    <h3 className="text-2xl font-bold tracking-tight text-black">{project.title}</h3>
+                    <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">{project.title}</h3>
                   </div>
-                  <p className="text-black text-sm leading-relaxed">{project.shortDescription}</p>
+                  <p className="text-slate-900 dark:text-slate-100 text-sm leading-relaxed">{project.shortDescription}</p>
                   <ul className="space-y-2">
                     {project.highlights.map((highlight) => (
-                      <li key={highlight} className="text-sm text-black flex items-start gap-2">
+                      <li key={highlight} className="text-sm text-slate-900 dark:text-slate-100 flex items-start gap-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
                         {highlight}
                       </li>
@@ -305,7 +305,7 @@ export default function FullstackPage() {
 
           {/* Process Section */}
           <section id="process" className="mb-24 scroll-mt-24">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 04_How_We_Work ]
             </h2>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
@@ -314,10 +314,10 @@ export default function FullstackPage() {
                   <span className="font-mono text-[0.65rem] uppercase tracking-widest text-blue-700">
                     Phase {index + 1}
                   </span>
-                  <h3 className="mt-4 text-lg font-bold text-black">
+                  <h3 className="mt-4 text-lg font-bold text-slate-900 dark:text-slate-100">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-black">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-900 dark:text-slate-100">
                     {step.desc}
                   </p>
                 </GlassPanel>
@@ -327,14 +327,14 @@ export default function FullstackPage() {
 
           {/* Engagement Models */}
           <section id="engagement" className="mb-24 scroll-mt-24">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 05_Engagement models ]
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {pricingModels.map((model) => (
                 <GlassPanel key={model.name} className="p-8 border-l-4 border-l-blue-500">
-                  <h3 className="text-xl font-bold text-black mb-2">{model.name}</h3>
-                  <p className="text-black text-sm mb-4 leading-relaxed">{model.desc}</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">{model.name}</h3>
+                  <p className="text-slate-900 dark:text-slate-100 text-sm mb-4 leading-relaxed">{model.desc}</p>
                   <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[0.65rem] font-mono uppercase tracking-widest rounded-full">
                     Best for: {model.bestFor}
                   </span>
@@ -345,17 +345,17 @@ export default function FullstackPage() {
 
           {/* FAQ Section */}
           <section id="faq" className="mb-24 scroll-mt-24">
-            <h2 className="mb-8 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 06_Frequently asked questions ]
             </h2>
             <div className="space-y-4">
               {faqs.map((faq) => (
                 <GlassPanel key={faq.q} className="p-6">
-                  <h3 className="text-base font-bold text-black mb-2 flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mb-2 flex items-center gap-2">
                     <HelpCircle className="h-4 w-4 text-blue-500" />
                     {faq.q}
                   </h3>
-                  <p className="text-black text-sm leading-relaxed pl-6">{faq.a}</p>
+                  <p className="text-slate-900 dark:text-slate-100 text-sm leading-relaxed pl-6">{faq.a}</p>
                 </GlassPanel>
               ))}
             </div>
@@ -386,7 +386,7 @@ export default function FullstackPage() {
             </GlassPanel>
           </section>
 
-          <footer className="mt-24 border-t border-gray-300 pt-8 flex items-center justify-between text-xs text-black font-mono">
+          <footer className="mt-24 border-t border-gray-300 pt-8 flex items-center justify-between text-xs text-slate-900 dark:text-slate-100 font-mono">
             <p>{SITE_PROFILE.name} &copy; {new Date().getFullYear()}</p>
             <p className="flex items-center gap-2">
               <Settings className="h-3.5 w-3.5 animate-spin-slow" />
