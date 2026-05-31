@@ -181,14 +181,14 @@ export default function FullstackPage() {
               Engineering Business Growth
             </div>
 
-            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-slate-100">
+            <h1 className="max-w-4xl text-3xl font-extrabold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
               Fullstack development partner for{" "}
-              <span className="title-gradient font-extrabold italic pr-2">
+              <span className="font-extrabold italic text-blue-700 dark:text-cyan-300">
                 business websites, dashboards, automations, integrations, ERP, and operations systems.
               </span>
             </h1>
 
-            <p className="max-w-2xl text-lg text-slate-900 dark:text-slate-100 leading-relaxed sm:text-xl">
+            <p className="max-w-2xl text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed sm:text-xl">
               I build the technical engine that runs your business operations. From high-performance customer-facing sites to complex internal management systems.
             </p>
 
