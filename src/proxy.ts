@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const ADS_HOST = "ads.khusnudhoni.online";
 const DEV_HOST = "dev.khusnudhoni.online";
 const ROOT_HOST = "khusnudhoni.online";
 const WWW_HOST = "www.khusnudhoni.online";
-const ADS_HOST = "ads.khusnudhoni.online";
+const FULLSTACK_HOST = "fullstack.khusnudhoni.online";
+const WEB_HOST = "web.khusnudhoni.online";
 
 function isStaticPath(pathname: string): boolean {
   return (
@@ -24,13 +26,25 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (host === ROOT_HOST || host === WWW_HOST) {
+  if (host === ROOT_HOST || host === WWW_HOST || host === ADS_HOST) {
     return NextResponse.next();
   }
 
   if (host === DEV_HOST && !pathname.startsWith("/dev")) {
     const url = request.nextUrl.clone();
     url.pathname = `/dev${pathname}`;
+    return NextResponse.rewrite(url);
+  }
+
+  if (host === FULLSTACK_HOST && !pathname.startsWith("/fullstack")) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/fullstack${pathname}`;
+    return NextResponse.rewrite(url);
+  }
+
+  if (host === WEB_HOST && !pathname.startsWith("/fullstack")) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/fullstack${pathname}`;
     return NextResponse.rewrite(url);
   }
 
