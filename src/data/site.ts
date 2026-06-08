@@ -6,6 +6,7 @@ export const SITE_PROFILE = {
   webDomain: "https://web.khusnudhoni.online",
   devDomain: "https://dev.khusnudhoni.online",
   fullstackDomain: "https://fullstack.khusnudhoni.online",
+  seoDomain: "https://seo.khusnudhoni.online",
   email: "khusnudhoni@gmail.com",
   linkedInUrl: "https://www.linkedin.com/in/khusnudhoni/",
   whatsappUrl: "https://wa.me/6285158858310",

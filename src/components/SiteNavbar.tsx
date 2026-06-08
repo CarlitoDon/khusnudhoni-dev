@@ -8,11 +8,17 @@ import { ContactButton } from "@/components/ContactButton";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-type SiteNavbarProps = {
-  basePath?: string;
+type NavSection = {
+  id: string;
+  label: string;
 };
 
-export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
+type SiteNavbarProps = {
+  basePath?: string;
+  sections?: readonly NavSection[];
+};
+
+export function SiteNavbar({ basePath = "", sections = NAV_SECTIONS }: SiteNavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -42,7 +48,7 @@ export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
 
         {/* Desktop Navigation */}
         <div className="hidden sm:flex items-center gap-6 font-mono text-xs text-black dark:text-white font-semibold flex-shrink-0">
-          {NAV_SECTIONS.map((section) => (
+          {sections.map((section) => (
             <Link
               key={section.id}
               href={`${basePath}#${section.id}`}
@@ -68,7 +74,7 @@ export function SiteNavbar({ basePath = "" }: SiteNavbarProps) {
               className="sm:hidden overflow-hidden pointer-events-auto w-full origin-top"
             >
               <div className="flex flex-col py-4 gap-4 px-2">
-                {NAV_SECTIONS.map((section) => (
+                {sections.map((section) => (
                   <Link
                     key={section.id}
                     href={`${basePath}#${section.id}`}

@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const webUrl = SITE_PROFILE.webDomain;
   const devUrl = SITE_PROFILE.devDomain;
   const fullstackUrl = SITE_PROFILE.fullstackDomain;
+  const seoUrl = SITE_PROFILE.seoDomain;
 
   const adsCaseUrls: MetadataRoute.Sitemap = caseStudies.map((caseStudy) => ({
     url: `${adsUrl}/cases/${caseStudy.slug}`,
@@ -39,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: seoUrl,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.92,
     },
     ...adsCaseUrls,
   ];

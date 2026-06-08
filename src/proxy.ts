@@ -7,6 +7,7 @@ const ROOT_HOST = "khusnudhoni.online";
 const WWW_HOST = "www.khusnudhoni.online";
 const FULLSTACK_HOST = "fullstack.khusnudhoni.online";
 const WEB_HOST = "web.khusnudhoni.online";
+const SEO_HOST = "seo.khusnudhoni.online";
 
 function isStaticPath(pathname: string): boolean {
   return (
@@ -45,6 +46,12 @@ export function proxy(request: NextRequest) {
   if (host === WEB_HOST && !pathname.startsWith("/fullstack")) {
     const url = request.nextUrl.clone();
     url.pathname = `/fullstack${pathname}`;
+    return NextResponse.rewrite(url);
+  }
+
+  if (host === SEO_HOST && !pathname.startsWith("/seo")) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/seo${pathname}`;
     return NextResponse.rewrite(url);
   }
 
