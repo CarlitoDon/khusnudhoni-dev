@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { X, Send, MessageCircle } from "lucide-react";
 import { SITE_PROFILE } from "@/data/site";
+import { getDictionary } from "@/i18n/content";
+import { getLocaleFromPathname } from "@/i18n/routing";
 import { GlassButton } from "./GlassButton";
 
 type ContactModalProps = {
@@ -11,6 +14,9 @@ type ContactModalProps = {
 };
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname || "/");
+  const copy = getDictionary(locale).common.contactModal;
   const [formData, setFormData] = useState({
     name: "",
     objective: "growth",
@@ -21,11 +27,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const text = `Hi Dhoni, saya ${formData.name}. Saya tertarik diskusi terkait ${
-      formData.objective === "growth" ? "Growth System" : 
-      formData.objective === "tracking" ? "Tracking & Analytics" : "Konsultasi Umum"
-    }. Estimasi budget marketing bulanan: ${formData.budget}.`;
+    const objective =
+      copy.options.objectives.find((option) => option.value === formData.objective)
+        ?.message ?? formData.objective;
+    const budget =
+      copy.options.budgets.find((option) => option.value === formData.budget)
+        ?.label ?? formData.budget;
+    const text = copy.messageTemplate(formData.name, objective, budget);
     
     // Convert to WhatsApp link format
     const waUrl = `https://wa.me/${SITE_PROFILE.whatsappUrl.split('wa.me/')[1]}?text=${encodeURIComponent(text)}`;
@@ -49,22 +57,23 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       >
         <button 
           onClick={onClose}
+          aria-label="Close contact modal"
           className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600 dark:from-blue-400 dark:to-indigo-300 mb-2">
-          Let&apos;s build something.
+          {copy.title}
         </h2>
         <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
-          Isi form singkat ini agar saya bisa memberikan insight yang relevan dari awal kita chat.
+          {copy.description}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 mb-1.5 uppercase tracking-wider">
-              Nama Anda
+              {copy.nameLabel}
             </label>
             <input 
               required
@@ -72,38 +81,41 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               className="w-full bg-white/50 dark:bg-slate-800/50 border border-blue-100 dark:border-slate-700 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-slate-800 dark:text-slate-200"
-              placeholder="Cth: Budi (Santi Mebel)"
+              placeholder={copy.namePlaceholder}
             />
           </div>
 
           <div>
             <label className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 mb-1.5 uppercase tracking-wider">
-              Fokus Saat Ini
+              {copy.objectiveLabel}
             </label>
             <select 
               value={formData.objective}
               onChange={(e) => setFormData({...formData, objective: e.target.value})}
               className="w-full bg-white/50 dark:bg-slate-800/50 border border-blue-100 dark:border-slate-700 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-slate-800 dark:text-slate-200"
             >
-              <option value="growth">Scale up revenue / Growth System</option>
-              <option value="tracking">Setup GA4 / Tracking & Analytics</option>
-              <option value="general">Konsultasi Umum</option>
+              {copy.options.objectives.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
 
           <div>
             <label className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 mb-1.5 uppercase tracking-wider">
-              Estimasi Monthly Ad Spend
+              {copy.budgetLabel}
             </label>
             <select 
               value={formData.budget}
               onChange={(e) => setFormData({...formData, budget: e.target.value})}
               className="w-full bg-white/50 dark:bg-slate-800/50 border border-blue-100 dark:border-slate-700 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-slate-800 dark:text-slate-200"
             >
-              <option value="<10m">Kurang dari Rp 10 Juta</option>
-              <option value="10m-50m">Rp 10 - 50 Juta</option>
-              <option value="50m-100m">Rp 50 - 100 Juta</option>
-              <option value=">100m">Lebih dari Rp 100 Juta</option>
+              {copy.options.budgets.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -115,7 +127,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               className="w-full justify-center py-3 text-sm font-bold"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              Lanjut ke WhatsApp
+              {copy.submitLabel}
               <Send className="w-4 h-4 ml-2 opacity-70" />
             </GlassButton>
           </div>

@@ -3,20 +3,27 @@
 import { useState } from "react";
 import { TrendingUp, Eye } from "lucide-react";
 import { AnimatedCounter } from "./AnimatedCounter";
+import type { Dictionary } from "@/i18n/content";
 
 export function HiddenImpactSection({ 
   results, 
-  metrics 
+  metrics,
+  labels = {
+    title: "Business Impact",
+    revealAria: "Reveal impact",
+    revealButton: "REVEAL IMPACT",
+  },
 }: { 
   results: string[];
   metrics?: { value: number; prefix?: string; suffix?: string; label: string }[];
+  labels?: Dictionary["common"]["hiddenImpact"];
 }) {
   const [isRevealed, setIsRevealed] = useState(false);
 
   return (
     <div className="relative liquid-pill py-8 px-6 sm:px-8 rounded-2xl shadow-sm animate-enter delay-300 overflow-hidden group">
       <span className="font-mono text-sm text-green-700 dark:text-green-400 uppercase tracking-widest flex items-center gap-2 mb-6 border-b border-gray-200 dark:border-gray-800 pb-3">
-        <TrendingUp className="h-5 w-5" /> Business Impact
+        <TrendingUp className="h-5 w-5" /> {labels.title}
       </span>
       
       <div className={`relative transition-all duration-700 ${!isRevealed ? "blur-[6px] opacity-40 select-none" : "blur-none opacity-100"}`}>
@@ -52,14 +59,15 @@ export function HiddenImpactSection({
           <button
             onClick={() => setIsRevealed(true)}
             className="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white/95 dark:bg-slate-900 hover:bg-white dark:hover:bg-slate-800 text-blue-700 dark:text-blue-400 shadow-[0_4px_32px_rgba(0,0,0,0.12)] transition-all duration-300 transform hover:scale-105 border border-blue-100 dark:border-blue-900/50 cursor-pointer"
-            aria-label="Reveal Impact"
+            aria-label={labels.revealAria}
           >
             <Eye className="h-8 w-8" />
-            <span className="text-[0.65rem] font-mono font-bold tracking-wider mt-1">REVEAL IMPACT</span>
+            <span className="text-[0.65rem] font-mono font-bold tracking-wider mt-1">
+              {labels.revealButton}
+            </span>
           </button>
         </div>
       )}
     </div>
   );
 }
-

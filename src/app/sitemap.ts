@@ -1,52 +1,66 @@
 import type { MetadataRoute } from "next";
-import { caseStudies } from "@/data/cases";
 import { SITE_PROFILE } from "@/data/site";
+import { getCaseStudies } from "@/i18n/content";
+import {
+  caseUrls,
+  devUrls,
+  fullstackUrls,
+  homeUrls,
+  seoUrls,
+} from "@/i18n/metadata";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const adsUrl = SITE_PROFILE.adsDomain;
-  const webUrl = SITE_PROFILE.webDomain;
-  const devUrl = SITE_PROFILE.devDomain;
-  const fullstackUrl = SITE_PROFILE.fullstackDomain;
-  const seoUrl = SITE_PROFILE.seoDomain;
+type SitemapAlternates = {
+  id: string;
+  en: string;
+};
 
-  const adsCaseUrls: MetadataRoute.Sitemap = caseStudies.map((caseStudy) => ({
-    url: `${adsUrl}/cases/${caseStudy.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+function localizedEntries(
+  urls: SitemapAlternates,
+  priority: number,
+): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+  const alternates = {
+    languages: {
+      id: urls.id,
+      en: urls.en,
+      "x-default": urls.id,
+    },
+  };
 
   return [
     {
-      url: adsUrl,
-      lastModified: new Date(),
+      url: urls.id,
+      lastModified,
       changeFrequency: "monthly",
-      priority: 1,
+      priority,
+      alternates,
     },
     {
-      url: webUrl,
-      lastModified: new Date(),
+      url: urls.en,
+      lastModified,
       changeFrequency: "monthly",
-      priority: 0.95,
+      priority,
+      alternates,
     },
-    {
-      url: devUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: fullstackUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: seoUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.92,
-    },
+  ];
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const webUrls = {
+    id: SITE_PROFILE.webDomain,
+    en: `${SITE_PROFILE.webDomain}/en/fullstack`,
+  };
+
+  const adsCaseUrls: MetadataRoute.Sitemap = getCaseStudies("id").flatMap(
+    (caseStudy) => localizedEntries(caseUrls(caseStudy.slug), 0.8),
+  );
+
+  return [
+    ...localizedEntries(homeUrls(), 1),
+    ...localizedEntries(webUrls, 0.95),
+    ...localizedEntries(devUrls(), 0.9),
+    ...localizedEntries(fullstackUrls(), 0.9),
+    ...localizedEntries(seoUrls(), 0.92),
     ...adsCaseUrls,
   ];
 }

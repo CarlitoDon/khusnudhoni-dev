@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Sora } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import { SITE_PROFILE } from "@/data/site";
 import { BackdropCapabilityProbe } from "@/components/BackdropCapabilityProbe";
 import { ScrollBehaviorFix } from "@/components/ScrollBehaviorFix";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ContactModalProvider } from "@/components/ContactModalProvider";
+import { resolveLocale } from "@/i18n/routing";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -62,13 +64,16 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const locale = resolveLocale(requestHeaders.get("x-active-locale"));
+
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${sora.variable} ${ibmPlexMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ContactModalProvider>
