@@ -29,6 +29,7 @@ const outcomeIcons = [Radar, Wrench, LineChart] as const;
 
 export function SeoPageContent({ locale }: SeoPageContentProps) {
   const t = getDictionary(locale);
+  const badgeParts = t.seo.badge.split(" / ");
   const seoWhatsappUrl = `${SITE_PROFILE.whatsappUrl}?text=${encodeURIComponent(t.seo.whatsappText)}`;
 
   const jsonLd = {
@@ -81,12 +82,23 @@ export function SeoPageContent({ locale }: SeoPageContentProps) {
 
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-28 sm:px-10 sm:pt-32 lg:px-14">
           <header className="mb-20 flex flex-col items-start gap-6 animate-enter sm:mb-24">
-            <div className="magic-badge grid max-w-full grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2 rounded-2xl px-3 py-2 font-mono text-[0.72rem] uppercase tracking-wider text-blue-700 sm:inline-flex sm:items-center sm:rounded-full sm:py-1 dark:text-cyan-300">
+            <div className="magic-badge seo-page-badge grid max-w-full grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2 rounded-2xl px-3 py-2 font-mono text-[0.72rem] uppercase tracking-wider text-blue-700 sm:inline-flex sm:items-center sm:rounded-full sm:py-1 dark:text-cyan-300">
               <Search className="h-3.5 w-3.5" />
-              <span className="magic-badge-label block">{t.seo.badge}</span>
+              <span className="magic-badge-label">
+                {badgeParts.map((part, index) => (
+                  <span className="magic-badge-part" key={part}>
+                    {index > 0 ? (
+                      <span className="magic-badge-separator" aria-hidden="true">
+                        /
+                      </span>
+                    ) : null}
+                    {part}
+                  </span>
+                ))}
+              </span>
             </div>
 
-            <h1 className="max-w-5xl text-3xl font-extrabold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-5xl break-words text-3xl font-extrabold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
               {t.seo.headingLead}
               <span className="font-extrabold italic text-blue-700 dark:text-cyan-300">
                 {t.seo.headingEmphasis}

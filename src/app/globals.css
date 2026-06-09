@@ -379,8 +379,19 @@ body {
 }
 
 .magic-badge-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.35rem;
   min-width: 0;
-  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.magic-badge-part {
+  white-space: nowrap;
+}
+
+.magic-badge-separator {
+  margin-right: 0.35rem;
 }
 
 .magic-badge svg {
@@ -530,11 +541,23 @@ body {
   }
 
   .magic-badge-label {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .magic-badge svg {
     margin-top: 0.08rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .seo-page-badge .magic-badge-label {
+    flex-direction: column;
+    gap: 0.08rem;
+  }
+
+  .seo-page-badge .magic-badge-separator {
+    display: none;
   }
 }
 
