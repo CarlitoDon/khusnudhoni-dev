@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SITE_PROFILE } from "@/app/_constants/site";
+import { SITE_PROFILE } from "@/data/site";
 import {
   ArrowRight,
   BarChart3,
@@ -14,11 +14,11 @@ import {
   Sparkles,
   Wrench,
 } from "lucide-react";
-import { BackgroundLayer } from "@/app/_components/BackgroundLayer";
-import { GlassButton } from "@/app/_components/GlassButton";
-import { GlassPanel } from "@/app/_components/GlassPanel";
-import { InteractiveStackGlow } from "@/app/_components/InteractiveStackGlow";
-import { SiteNavbar } from "@/app/_components/SiteNavbar";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
+import { GlassButton } from "@/components/GlassButton";
+import { GlassPanel } from "@/components/GlassPanel";
+import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
+import { SiteNavbar } from "@/components/SiteNavbar";
 
 export const metadata: Metadata = {
   title: "Khusnudhoni SEO Specialist | Technical SEO, Local SEO & Growth Search Systems",

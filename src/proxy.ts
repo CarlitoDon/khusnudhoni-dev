@@ -20,6 +20,16 @@ function isStaticPath(pathname: string): boolean {
   );
 }
 
+function requestWithLocaleHeader(request: NextRequest) {
+  const locale = getLocaleFromPathname(request.nextUrl.pathname);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-locale", locale);
+  return {
+    ...request,
+    headers: requestHeaders,
+  };
+}
+
 export function proxy(request: NextRequest) {
   const host = (request.headers.get("host") || "").split(":")[0];
   const { pathname } = request.nextUrl;

@@ -1,5 +1,18 @@
 import { HomePageContent } from "@/app/_components/HomePageContent";
 import { getHomeMetadata } from "@/i18n/metadata";
+import { SITE_PROFILE } from "@/data/site";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
+import { SiteNavbar } from "@/components/SiteNavbar";
+import { ContactButton } from "@/components/ContactButton";
+import { GlassButton } from "@/components/GlassButton";
+import { TrustedBy } from "@/components/TrustedBy";
+import { GlassPanel } from "@/components/GlassPanel";
+import { WorkProcess } from "@/components/WorkProcess";
+import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
+import { growthStack, growthStackCategory } from "@/data/dev-portfolio";
+import { caseStudies } from "@/data/cases";
+import { TrendingUp, Linkedin, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = getHomeMetadata("id");
 
@@ -197,10 +210,8 @@ export default function Home() {
                       </span>
                       <div className="flex flex-wrap gap-3">
                         {category.items.map((tool) => {
-                          const Icon = tool.icon;
                           return (
                             <span className="tech-chip flex items-center gap-2" key={tool.name}>
-                              <Icon className="w-3.5 h-3.5 opacity-70" />
                               {tool.name}
                             </span>
                           );

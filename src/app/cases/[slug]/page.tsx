@@ -1,6 +1,13 @@
 import { CaseStudyPageContent } from "@/app/_components/CaseStudyPageContent";
-import { getCaseStudies } from "@/i18n/content";
-import { getCaseMetadata } from "@/i18n/metadata";
+import { getCaseStudies, getCaseStudyBySlug } from "@/data/cases";
+import { SITE_PROFILE } from "@/data/site";
+import { notFound } from "next/navigation";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
+import { SiteNavbar } from "@/components/SiteNavbar";
+import { GlassPanel } from "@/components/GlassPanel";
+import { HiddenImpactSection } from "@/components/HiddenImpactSection";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export function generateStaticParams() {
   return getCaseStudies("id").map((caseStudy) => ({

@@ -88,7 +88,7 @@ export function HomePageContent({ locale }: HomePageContentProps) {
             </div>
           </header>
 
-          <TrustedBy copy={t.common.trustedBy} />
+          <TrustedBy locale={locale} />
 
           <section
             id="about"
@@ -133,7 +133,7 @@ export function HomePageContent({ locale }: HomePageContentProps) {
               {t.home.processLabel}
             </h2>
             <div className="animate-enter delay-200">
-              <WorkProcess steps={t.common.workProcess.steps} />
+              <WorkProcess locale={locale} />
             </div>
           </section>
 

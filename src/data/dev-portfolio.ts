@@ -145,3 +145,14 @@ export const devStack = [
   "Vitest",
   "Docker",
 ] as const;
+
+export const growthStack = devStack;
+export const growthStackCategory = [
+  {
+    category: "Development",
+    items: [
+      { name: "TypeScript" },
+      { name: "Node.js" },
+    ],
+  },
+];
