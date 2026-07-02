@@ -189,5 +189,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               variant="primary"
               className="w-full justify-center py-3 text-sm font-bold"
             >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              {copy[locale].submit}
+              <Send className="w-4 h-4 ml-2 opacity-70" />
+            </GlassButton>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

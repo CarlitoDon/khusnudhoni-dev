@@ -53,7 +53,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...englishAdsCaseUrls,
   ];
 }
-    ...adsCaseUrls,
-    ...englishAdsCaseUrls,
-  ];
-}

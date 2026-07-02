@@ -58,11 +58,4 @@ export function TrustedBy({ locale = "id" }: TrustedByProps) {
     </section>
   );
 }
-        
-        {/* Gradient fades for edges */}
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#fbfdfd] dark:from-slate-900 to-transparent z-10"></div>
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#fbfdfd] dark:from-slate-900 to-transparent z-10"></div>
-      </div>
-    </section>
-  );
-}
+

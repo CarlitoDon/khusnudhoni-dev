@@ -11,12 +11,8 @@ import { routeFor, type Locale } from "@/lib/i18n";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { getDictionary } from "@/i18n/content";
-import {
-  defaultLocale,
-  languagePath,
   localizedPath,
   locales,
-  type Locale,
 } from "@/i18n/routing";
 
 type NavSection = {
