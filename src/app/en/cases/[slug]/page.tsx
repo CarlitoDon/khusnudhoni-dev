@@ -1,18 +1,25 @@
-import { CaseStudyPageContent } from "@/app/_components/CaseStudyPageContent";
-import { getCaseStudies } from "@/i18n/content";
-import { getCaseMetadata } from "@/i18n/metadata";
+import type { Metadata } from "next";
+import { getCaseStudies, getCaseStudyBySlug } from "@/data/cases";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { HiddenImpactSection } from "@/components/HiddenImpactSection";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
+import { GlassPanel } from "@/components/GlassPanel";
+import { SiteNavbar } from "@/components/SiteNavbar";
+import { SITE_PROFILE } from "@/data/site";
 
-export function generateStaticParams() {
-  return getCaseStudies("id").map((caseStudy) => ({
+export async function generateStaticParams() {
+  return getCaseStudies("en").map((caseStudy) => ({
     slug: caseStudy.slug,
   }));
 }
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const params = await props.params;
-  const caseStudy = getCaseStudyBySlug(params.slug);
+  const caseStudy = getCaseStudyBySlug(params.slug, "en");
 
   if (!caseStudy) {
     return {
@@ -25,7 +32,7 @@ export async function generateMetadata(props: {
     title: `${caseStudy.title} | Case Study | ${SITE_PROFILE.name}`,
     description: caseStudy.shortDescription,
     alternates: {
-      canonical: `${SITE_PROFILE.adsDomain}/cases/${caseStudy.slug}`,
+      canonical: `${SITE_PROFILE.adsDomain}/en/cases/${caseStudy.slug}`,
       languages: {
         id: `${SITE_PROFILE.adsDomain}/cases/${caseStudy.slug}`,
         en: `${SITE_PROFILE.adsDomain}/en/cases/${caseStudy.slug}`,
@@ -34,26 +41,26 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function CaseStudyPage(props: {
+export default async function EnglishCaseStudyPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const caseStudy = getCaseStudyBySlug(params.slug);
+  const caseStudy = getCaseStudyBySlug(params.slug, "en");
 
   if (!caseStudy) {
     notFound();
   }
 
   return (
-    <main className="relative min-h-screen z-0">
+    <main lang="en" className="relative min-h-screen z-0">
       <BackgroundLayer showSecondaryOrb={false} />
-      <SiteNavbar basePath="/" locale="id" />
+      <SiteNavbar basePath="/en" locale="en" />
 
       <div className="mx-auto max-w-5xl px-6 pb-24 pt-32 sm:px-10 lg:px-14">
         <GlassPanel className="p-8 md:p-12 shadow-sm animate-enter">
           <div className="mb-10">
             <Link
-              href="/#cases"
+              href="/en#cases"
               className="inline-flex items-center text-sm font-mono text-blue-600 hover:text-blue-700 transition-colors mb-8"
             >
               <ArrowLeft className="mr-2 h-4 w-4" /> [ BACK_TO_LIST ]

@@ -4,18 +4,25 @@ import { MessageCircle, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "./ContactModalProvider";
 import { GlassButton } from "./GlassButton";
-import { getDictionary } from "@/i18n/content";
-import { getLocaleFromPathname } from "@/i18n/routing";
+import type { Locale } from "@/lib/i18n";
 
 type ContactButtonProps = {
   isHero?: boolean;
+  locale?: Locale;
 };
 
-export function ContactButton({ isHero }: ContactButtonProps) {
+export function ContactButton({ isHero, locale = "id" }: ContactButtonProps) {
   const { openModal } = useContactModal();
-  const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname || "/");
-  const labels = getDictionary(locale).common.buttons;
+  const labels = {
+    id: {
+      hero: "Chat via WhatsApp",
+      compact: "Contact",
+    },
+    en: {
+      hero: "Chat via WhatsApp",
+      compact: "Contact",
+    },
+  } satisfies Record<Locale, { hero: string; compact: string }>;
 
   if (isHero) {
     return (
@@ -27,7 +34,7 @@ export function ContactButton({ isHero }: ContactButtonProps) {
         variant="primary"
       >
         <MessageCircle className="mr-2 h-4 w-4" />
-        {labels.heroContact}
+        {labels[locale].hero}
         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
       </GlassButton>
     );
@@ -39,7 +46,7 @@ export function ContactButton({ isHero }: ContactButtonProps) {
       type="button"
       className="pointer-events-auto cursor-pointer liquid-pill text-black dark:text-blue-300 hover:text-blue-700 dark:hover:text-blue-200 px-3 sm:px-4 py-1.5 sm:py-1.5 rounded-full transition-all font-mono text-[0.64rem] sm:text-[0.68rem] font-semibold tracking-wider shrink-0 whitespace-nowrap"
     >
-      {labels.contact}
+      {labels[locale].compact}
     </button>
   );
 }

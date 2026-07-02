@@ -1,14 +1,47 @@
-import { HomePageContent } from "@/app/_components/HomePageContent";
-import { getHomeMetadata } from "@/i18n/metadata";
+import type { Metadata } from "next";
+import { Linkedin, ArrowRight, TrendingUp } from "lucide-react";
+import Link from "next/link";
+import { getCaseStudies } from "@/data/cases";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
+import { GlassButton } from "@/components/GlassButton";
+import { GlassPanel } from "@/components/GlassPanel";
+import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
+import { SiteNavbar } from "@/components/SiteNavbar";
+import { SITE_PROFILE } from "@/data/site";
+import { growthStackCategory, growthStack } from "@/data/growth-stack";
+import { TrustedBy } from "@/components/TrustedBy";
+import { WorkProcess } from "@/components/WorkProcess";
+import { ContactButton } from "@/components/ContactButton";
 
-export const metadata = getHomeMetadata("id");
+export const metadata: Metadata = {
+  title: "Khusnudhoni | Growth, Ads & Tracking Systems",
+  description:
+    "Growth and technical marketing portfolio for performance marketing, tracking infrastructure, and data-driven revenue systems.",
+  alternates: {
+    canonical: `${SITE_PROFILE.adsDomain}/en`,
+    languages: {
+      id: SITE_PROFILE.adsDomain,
+      en: `${SITE_PROFILE.adsDomain}/en`,
+    },
+  },
+  openGraph: {
+    title: "Khusnudhoni | Growth, Ads & Tracking Systems",
+    description:
+      "Performance marketing, tracking infrastructure, and system thinking for repeatable business growth.",
+    url: `${SITE_PROFILE.adsDomain}/en`,
+    siteName: `${SITE_PROFILE.name} Portfolio`,
+    locale: "en_US",
+    type: "website",
+  },
+};
 
-export default function Home() {
+export default function EnglishHome() {
+  const caseStudies = getCaseStudies("en");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: SITE_PROFILE.name,
-    url: SITE_PROFILE.domain,
+    url: `${SITE_PROFILE.adsDomain}/en`,
     jobTitle: "Growth & Technical Marketing",
     knowsAbout: growthStack,
     worksFor: {
@@ -23,12 +56,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="relative min-h-full z-0">
+      <main lang="en" className="relative min-h-full z-0">
         <BackgroundLayer />
-        <SiteNavbar locale="id" />
+        <SiteNavbar basePath="/en" locale="en" />
 
         <div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-10 sm:pt-20 lg:px-14">
-          {/* Header Section */}
           <header className="mb-16 sm:mb-24 flex flex-col items-start gap-5 sm:gap-6 animate-enter">
             <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.62rem] sm:text-[0.75rem] uppercase tracking-wider text-blue-700">
               <TrendingUp className="mr-2 h-3.5 w-3.5 text-blue-600" />
@@ -36,20 +68,19 @@ export default function Home() {
             </div>
 
             <h1 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-white">
-              Growth bukan soal iklan yang bagus. Growth adalah sistem yang{" "}
+              Growth is not about good ads. Growth is a system that{" "}
               <span className="title-gradient font-extrabold italic pr-2">
-                menghasilkan revenue konsisten.
+                generates consistent revenue.
               </span>
             </h1>
 
             <p className="max-w-2xl text-base text-slate-900 dark:text-slate-200 leading-relaxed sm:text-xl">
-              Saya menggabungkan performance marketing, tracking infrastructure,
-              dan system thinking untuk membantu bisnis mengambil keputusan
-              berbasis data, bukan vanity metrics.
+              I combine performance marketing, tracking infrastructure, and system
+              thinking to help businesses make decisions from data instead of vanity metrics.
             </p>
 
             <div className="mt-3 flex w-full flex-col sm:w-auto sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-              <ContactButton isHero />
+              <ContactButton isHero locale="en" />
               <GlassButton
                 className="justify-center"
                 href={SITE_PROFILE.linkedInUrl}
@@ -63,7 +94,7 @@ export default function Home() {
 
             <div className="w-full sm:w-auto rounded-2xl border border-white/70 bg-white/60 px-4 py-3 backdrop-blur-sm">
               <p className="font-mono text-[0.62rem] sm:text-[0.7rem] uppercase tracking-wider text-blue-700">
-                Prefer email for detailed brief?
+                Prefer email for a detailed brief?
               </p>
               <a
                 href={`mailto:${SITE_PROFILE.email}`}
@@ -74,9 +105,8 @@ export default function Home() {
             </div>
           </header>
 
-          <TrustedBy locale="id" />
+          <TrustedBy locale="en" />
 
-          {/* Profil / About Section */}
           <section id="about" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24 animate-enter delay-100">
             <h2 className="mb-4 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-200 uppercase">
               [ 00_Who_Am_I ]
@@ -89,16 +119,14 @@ export default function Home() {
                   </h3>
                   <div className="space-y-4 text-slate-900 dark:text-slate-200 leading-relaxed text-sm md:text-base">
                     <p>
-                      Saya adalah <strong>builder-operator</strong> di area
-                      growth. Saya tidak hanya menjalankan ads, tetapi membangun
-                      sistem di belakangnya agar acquisition, tracking,
-                      conversion, dan retention berjalan sebagai satu ekosistem.
+                      I am a <strong>builder-operator</strong> in growth. I do not
+                      only run ads; I build the system behind acquisition, tracking,
+                      conversion, and retention so they work as one operating loop.
                     </p>
                     <p>
-                      Pendekatan saya selalu data-first: campaign berbasis
-                      hipotesis, tracking yang dapat diaudit, dan dashboard yang
-                      bisa dipakai tim untuk keputusan harian. Goal akhirnya
-                      sederhana: revenue yang nyata dan bisa diulang.
+                      My approach is data-first: hypothesis-led campaigns, auditable
+                      tracking, and dashboards the team can use for daily decisions.
+                      The goal is simple: real revenue that can be repeated.
                     </p>
                   </div>
                 </div>
@@ -138,11 +166,10 @@ export default function Home() {
               [ 00.5_How_I_Build ]
             </h2>
             <div className="animate-enter delay-200">
-              <WorkProcess locale="id" />
+              <WorkProcess locale="en" />
             </div>
           </section>
 
-          {/* Case Studies Bento Grid */}
           <section id="cases" className="mb-16 sm:mb-24 scroll-mt-32 sm:scroll-mt-24">
             <h2 className="mb-4 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-200 uppercase animate-enter delay-200">
               [ 01_Case_Studies ]
@@ -154,7 +181,7 @@ export default function Home() {
                   key={study.title}
                 >
                   <Link
-                    href={`/cases/${study.slug}`}
+                    href={`/en/cases/${study.slug}`}
                     className="absolute inset-0 z-10"
                     aria-label={`Read ${study.title}`}
                   />
@@ -182,7 +209,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Infrastructure Toolkit */}
           <section id="stack" className="animate-enter delay-300 scroll-mt-32 sm:scroll-mt-24">
             <h2 className="mb-6 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-200 uppercase">
               [ 02_Growth_Stack ]

@@ -9,58 +9,51 @@ import {
   seoUrls,
 } from "@/i18n/metadata";
 
-type SitemapAlternates = {
-  id: string;
-  en: string;
-};
-
-function localizedEntries(
-  urls: SitemapAlternates,
-  priority: number,
-): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  const alternates = {
-    languages: {
-      id: urls.id,
-      en: urls.en,
-      "x-default": urls.id,
-    },
-  };
-
-  return [
-    {
-      url: urls.id,
-      lastModified,
-      changeFrequency: "monthly",
-      priority,
-      alternates,
-    },
-    {
-      url: urls.en,
-      lastModified,
-      changeFrequency: "monthly",
-      priority,
-      alternates,
-    },
-  ];
+function absolutePath(origin: string, path: string): string {
+  return path === "/" ? origin : `${origin}${path}`;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const webUrls = {
-    id: SITE_PROFILE.webDomain,
-    en: `${SITE_PROFILE.webDomain}/en/fullstack`,
-  };
+  const adsUrl = SITE_PROFILE.adsDomain;
 
-  const adsCaseUrls: MetadataRoute.Sitemap = getCaseStudies("id").flatMap(
-    (caseStudy) => localizedEntries(caseUrls(caseStudy.slug), 0.8),
-  );
+  const canonicalPages: Array<{ path: string; priority: number }> = [
+    { path: "/", priority: 1 },
+    { path: "/en", priority: 1 },
+    { path: "/seo", priority: 0.92 },
+    { path: "/en/seo", priority: 0.92 },
+    { path: "/dev", priority: 0.9 },
+    { path: "/en/dev", priority: 0.9 },
+    { path: "/fullstack", priority: 0.9 },
+    { path: "/en/fullstack", priority: 0.9 },
+  ];
+
+  const pageUrls: MetadataRoute.Sitemap = canonicalPages.map((page) => ({
+    url: absolutePath(adsUrl, page.path),
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: page.priority,
+  }));
+
+  const adsCaseUrls: MetadataRoute.Sitemap = getCaseStudies("id").map((caseStudy) => ({
+    url: `${adsUrl}/cases/${caseStudy.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+  const englishAdsCaseUrls: MetadataRoute.Sitemap = getCaseStudies("id").map((caseStudy) => ({
+    url: `${adsUrl}/en/cases/${caseStudy.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
   return [
-    ...localizedEntries(homeUrls(), 1),
-    ...localizedEntries(webUrls, 0.95),
-    ...localizedEntries(devUrls(), 0.9),
-    ...localizedEntries(fullstackUrls(), 0.9),
-    ...localizedEntries(seoUrls(), 0.92),
+    ...pageUrls,
     ...adsCaseUrls,
+    ...englishAdsCaseUrls,
+  ];
+}
+    ...adsCaseUrls,
+    ...englishAdsCaseUrls,
   ];
 }

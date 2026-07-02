@@ -6,14 +6,14 @@ import { GlassPanel } from "@/components/GlassPanel";
 import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SITE_PROFILE } from "@/data/site";
-import { devIntro, devProjects, devStack } from "@/data/dev-portfolio";
+import { devStack, getDevPortfolio } from "@/data/dev-portfolio";
 
 export const metadata: Metadata = {
   title: "Khusnudhoni Backend & Fullstack Developer",
   description:
-    "Portfolio backend dan fullstack developer untuk API architecture, data modeling, TypeScript systems, dan production-ready web delivery.",
+    "Backend and fullstack developer portfolio covering API architecture, data modeling, TypeScript systems, and production-ready web delivery.",
   alternates: {
-    canonical: `${SITE_PROFILE.adsDomain}/dev`,
+    canonical: `${SITE_PROFILE.adsDomain}/en/dev`,
     languages: {
       id: `${SITE_PROFILE.adsDomain}/dev`,
       en: `${SITE_PROFILE.adsDomain}/en/dev`,
@@ -21,15 +21,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DevHomePage() {
+export default function EnglishDevHomePage() {
+  const { intro, projects } = getDevPortfolio("en");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: SITE_PROFILE.name,
-    url: `${SITE_PROFILE.adsDomain}/dev`,
+    url: `${SITE_PROFILE.adsDomain}/en/dev`,
     jobTitle: "Backend & Fullstack Web Developer",
     knowsAbout: devStack,
   };
+  const [headingBefore, headingAfter = ""] = intro.heading.split("robust");
 
   return (
     <>
@@ -37,27 +39,27 @@ export default function DevHomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="relative min-h-screen z-0">
+      <main lang="en" className="relative min-h-screen z-0">
         <BackgroundLayer />
-        <SiteNavbar basePath="/dev" locale="id" />
+        <SiteNavbar basePath="/en/dev" locale="en" />
 
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-32 sm:px-10 lg:px-14">
           <header className="mb-24 flex flex-col items-start gap-6 animate-enter">
             <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.75rem] uppercase tracking-wider text-blue-700 dark:text-blue-200">
               <Server className="mr-2 h-3.5 w-3.5 text-blue-600 dark:text-blue-300" />
-              {devIntro.roleLabel}
+              {intro.roleLabel}
             </div>
 
             <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              {devIntro.heading.split("robust")[0]}
+              {headingBefore}
               <span className="title-gradient font-extrabold italic pr-2">
                 robust
               </span>
-              {devIntro.heading.split("robust")[1]}
+              {headingAfter}
             </h1>
 
             <p className="max-w-2xl text-lg leading-relaxed text-foreground/80 sm:text-xl">
-              {devIntro.summary}
+              {intro.summary}
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-4">
@@ -108,7 +110,7 @@ export default function DevHomePage() {
                   <h3 className="text-2xl font-bold text-foreground">
                     {SITE_PROFILE.name}
                   </h3>
-                  {devIntro.about.map((paragraph) => (
+                  {intro.about.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
@@ -148,7 +150,7 @@ export default function DevHomePage() {
               [ 01_Selected_Projects ]
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 relative z-10 animate-enter delay-300">
-              {devProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <article
                   className={`bento-card glass-surface-primary p-8 md:p-10 flex flex-col gap-6 group hover:border-blue-400/50 ${index === 0 ? "md:col-span-2" : ""}`}
                   key={project.slug}

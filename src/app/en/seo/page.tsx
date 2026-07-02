@@ -1,12 +1,11 @@
-import { Metadata } from "next";
-import { SITE_PROFILE } from "@/app/_constants/site";
+import type { Metadata } from "next";
 import {
   ArrowRight,
   BarChart3,
   CheckCircle2,
   FileSearch,
-  LineChart,
   Link2,
+  LineChart,
   MapPinned,
   MessageCircle,
   Radar,
@@ -14,16 +13,17 @@ import {
   Sparkles,
   Wrench,
 } from "lucide-react";
-import { BackgroundLayer } from "@/app/_components/BackgroundLayer";
-import { GlassButton } from "@/app/_components/GlassButton";
-import { GlassPanel } from "@/app/_components/GlassPanel";
-import { InteractiveStackGlow } from "@/app/_components/InteractiveStackGlow";
-import { SiteNavbar } from "@/app/_components/SiteNavbar";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
+import { GlassButton } from "@/components/GlassButton";
+import { GlassPanel } from "@/components/GlassPanel";
+import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
+import { SiteNavbar } from "@/components/SiteNavbar";
+import { SITE_PROFILE } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Khusnudhoni SEO Specialist | Technical SEO, Local SEO & Growth Search Systems",
   description:
-    "SEO partner untuk bisnis lokal dan e-commerce: audit teknikal, GSC opportunity mining, content cluster, local SEO, internal linking, dan measurement system.",
+    "SEO partner for local and e-commerce businesses: technical audits, GSC opportunity mining, content clusters, local SEO, internal linking, and measurement systems.",
   keywords: [
     "SEO specialist Indonesia",
     "technical SEO",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "SEO consultant",
   ],
   alternates: {
-    canonical: `${SITE_PROFILE.adsDomain}/seo`,
+    canonical: `${SITE_PROFILE.adsDomain}/en/seo`,
     languages: {
       id: `${SITE_PROFILE.adsDomain}/seo`,
       en: `${SITE_PROFILE.adsDomain}/en/seo`,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     title: "Khusnudhoni SEO Specialist",
     description:
       "Technical SEO, local SEO, content clusters, and measurable search-growth systems for businesses.",
-    url: `${SITE_PROFILE.adsDomain}/seo`,
+    url: `${SITE_PROFILE.adsDomain}/en/seo`,
     type: "website",
-    locale: "id_ID",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
@@ -163,17 +163,17 @@ const seoNavSections = [
 ] as const;
 
 const seoWhatsappText =
-  "Halo Khusnudhoni, saya ingin audit SEO untuk domain saya. cta_source=seo_subdomain";
+  "Hello Khusnudhoni, I want an SEO audit for my domain. cta_source=seo_subdomain_en";
 const seoWhatsappUrl = `${SITE_PROFILE.whatsappUrl}?text=${encodeURIComponent(seoWhatsappText)}`;
 
-export default function SeoPage() {
+export default function EnglishSeoPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "ProfessionalService",
         name: "Khusnudhoni SEO Specialist",
-        url: `${SITE_PROFILE.adsDomain}/seo`,
+        url: `${SITE_PROFILE.adsDomain}/en/seo`,
         areaServed: "Indonesia",
         description:
           "Technical SEO, local SEO, content cluster, and measurable search-growth systems.",
@@ -212,9 +212,9 @@ export default function SeoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="relative min-h-screen z-0">
+      <main lang="en" className="relative min-h-screen z-0">
         <BackgroundLayer />
-        <SiteNavbar locale="id" sections={seoNavSections} />
+        <SiteNavbar basePath="/en/seo" locale="en" sections={seoNavSections} />
 
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-28 sm:px-10 sm:pt-32 lg:px-14">
           <header className="mb-20 flex flex-col items-start gap-6 animate-enter sm:mb-24">
@@ -224,10 +224,9 @@ export default function SeoPage() {
             </div>
 
             <h1 className="max-w-5xl text-3xl font-extrabold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
-              SEO bukan sekadar artikel. SEO adalah sistem untuk menemukan,
-              memperbaiki, dan memenangkan
+              SEO is not just content. It is a system for finding, fixing, and winning
               <span className="font-extrabold italic text-blue-700 dark:text-cyan-300">
-                {" "}search demand yang bisa jadi lead.
+                {" "}search demand that can become leads.
               </span>
             </h1>
 

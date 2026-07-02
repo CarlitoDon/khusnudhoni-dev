@@ -1,18 +1,68 @@
 import { Search, Database, Zap, LineChart } from "lucide-react";
-import type { Dictionary } from "@/i18n/content";
+import type { ReactNode } from "react";
+import type { Locale } from "@/lib/i18n";
 
 type WorkProcessProps = {
-  steps: Dictionary["common"]["workProcess"]["steps"];
+  locale?: Locale;
 };
 
-const icons = [
-  <Search className="w-5 h-5" key="search" />,
-  <Database className="w-5 h-5" key="database" />,
-  <Zap className="w-5 h-5" key="zap" />,
-  <LineChart className="w-5 h-5" key="line-chart" />,
-] as const;
+export function WorkProcess({ locale = "id" }: WorkProcessProps) {
+  const copy = {
+    id: [
+      {
+        title: "Audit & Strategy",
+        description: "Analyze existing funnels and build a clear channel strategy before spending budget.",
+        icon: <Search className="w-5 h-5" />,
+        tag: "Phase 1"
+      },
+      {
+        title: "Infrastructure & Tracking",
+        description: "Setup robust measurement (Pixel, CAPI, GA4) to ensure every action is accountable.",
+        icon: <Database className="w-5 h-5" />,
+        tag: "Phase 2"
+      },
+      {
+        title: "Execution & Optimization",
+        description: "Deploy targeted Meta/Google Ads and refine landing page to WhatsApp handoffs.",
+        icon: <Zap className="w-5 h-5" />,
+        tag: "Phase 3"
+      },
+      {
+        title: "Scale & Dashboarding",
+        description: "Build internal dashboards and SOPs so the team can monitor and scale revenue consistently.",
+        icon: <LineChart className="w-5 h-5" />,
+        tag: "Phase 4"
+      }
+    ],
+    en: [
+      {
+        title: "Audit & Strategy",
+        description: "Analyze existing funnels and define a clear channel strategy before spending budget.",
+        icon: <Search className="w-5 h-5" />,
+        tag: "Phase 1"
+      },
+      {
+        title: "Infrastructure & Tracking",
+        description: "Set up reliable measurement with Pixel, CAPI, GA4, and clean event ownership.",
+        icon: <Database className="w-5 h-5" />,
+        tag: "Phase 2"
+      },
+      {
+        title: "Execution & Optimization",
+        description: "Launch targeted Meta/Google campaigns and refine landing page to WhatsApp handoffs.",
+        icon: <Zap className="w-5 h-5" />,
+        tag: "Phase 3"
+      },
+      {
+        title: "Scale & Dashboarding",
+        description: "Build dashboards and SOPs so the team can monitor and scale revenue consistently.",
+        icon: <LineChart className="w-5 h-5" />,
+        tag: "Phase 4"
+      }
+    ],
+  } satisfies Record<Locale, Array<{ title: string; description: string; icon: ReactNode; tag: string }>>;
+  const steps = copy[locale];
 
-export function WorkProcess({ steps }: WorkProcessProps) {
   return (
     <div className="relative mt-8">
       {/* Connecting Line (Desktop) */}
@@ -26,7 +76,7 @@ export function WorkProcess({ steps }: WorkProcessProps) {
           <div key={idx} className="flex flex-row md:flex-col items-start md:items-center relative group">
             {/* Step Icon Node */}
             <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white dark:bg-slate-800 border-2 border-blue-100 dark:border-slate-700 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none flex items-center justify-center text-blue-600 dark:text-blue-400 transition-all duration-300 group-hover:scale-110 group-hover:border-blue-300 dark:group-hover:border-blue-500 group-hover:shadow-[0_8px_30px_rgba(37,99,235,0.15)] z-10 relative">
-              {icons[idx]}
+              {step.icon}
               {/* Highlight dot */}
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-slate-800 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>

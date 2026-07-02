@@ -21,7 +21,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_PROFILE.rootDomain),
+  metadataBase: new URL(SITE_PROFILE.adsDomain),
   title: {
     default: `${SITE_PROFILE.name} | Portfolio`,
     template: `%s | ${SITE_PROFILE.name}`,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: `${SITE_PROFILE.name} | Portfolio`,
     description:
       "Showcase growth marketing systems dan engineering projects dengan pendekatan measurable impact.",
-    url: SITE_PROFILE.rootDomain,
+    url: SITE_PROFILE.adsDomain,
     siteName: `${SITE_PROFILE.name} Portfolio`,
     locale: "id_ID",
     type: "website",
@@ -54,7 +54,11 @@ export const metadata: Metadata = {
       "Growth + engineering portfolio with practical case studies and shipped systems.",
   },
   alternates: {
-    canonical: "/",
+    canonical: SITE_PROFILE.adsDomain,
+    languages: {
+      id: SITE_PROFILE.adsDomain,
+      en: `${SITE_PROFILE.adsDomain}/en`,
+    },
   },
 };
 

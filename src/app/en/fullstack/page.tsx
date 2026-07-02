@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
-import { ArrowRight, CheckCircle2, Code2, HelpCircle, Layout, Linkedin, MessageCircle, Server, Settings, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Code2,
+  HelpCircle,
+  Layout,
+  Linkedin,
+  MessageCircle,
+  Server,
+  Settings,
+  Zap,
+} from "lucide-react";
 import { BackgroundLayer } from "@/components/BackgroundLayer";
 import { GlassButton } from "@/components/GlassButton";
 import { GlassPanel } from "@/components/GlassPanel";
 import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SITE_PROFILE } from "@/data/site";
-import { devProjects, devStack } from "@/data/dev-portfolio";
+import { devStack, getDevPortfolio } from "@/data/dev-portfolio";
 
 export const metadata: Metadata = {
   title: "Khusnudhoni Fullstack Developer | khusnudhoni.online",
-  description: "Fullstack development partner for business websites, dashboards, automations, integrations, ERP, and operations systems. Type-safe, scalable, and production-ready solutions.",
-  keywords: ["fullstack developer", "web development", "business websites", "dashboards", "automations", "integrations", "ERP", "operations systems"],
+  description:
+    "Fullstack development partner for business websites, dashboards, automations, integrations, ERP, and operations systems.",
   alternates: {
-    canonical: `${SITE_PROFILE.adsDomain}/fullstack`,
+    canonical: `${SITE_PROFILE.adsDomain}/en/fullstack`,
     languages: {
       id: `${SITE_PROFILE.adsDomain}/fullstack`,
       en: `${SITE_PROFILE.adsDomain}/en/fullstack`,
@@ -21,143 +32,144 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FullstackPage() {
+const outcomes = [
+  {
+    title: "Eliminate Operational Bottlenecks",
+    desc: "Custom internal tools that replace messy spreadsheets and manual data entry.",
+    icon: Zap,
+  },
+  {
+    title: "Consolidated Data & Insights",
+    desc: "Unified dashboards that pull data from various sources for real-time decision making.",
+    icon: Layout,
+  },
+  {
+    title: "Scalable Infrastructure",
+    desc: "Type-safe architectures that grow with your business without constant technical debt.",
+    icon: Server,
+  },
+];
+
+const fullstackServices = [
+  {
+    title: "Business websites that convert",
+    summary:
+      "Fast, credible company sites and landing pages with clear messaging, contact flows, and analytics-ready structure.",
+    outputs: [
+      "Marketing site or campaign landing page",
+      "SEO-ready metadata and page structure",
+      "WhatsApp, email, and lead handoff flow",
+    ],
+  },
+  {
+    title: "Dashboards and internal tools",
+    summary:
+      "Operational dashboards that give owners and teams one reliable place to see status, tasks, and decisions.",
+    outputs: [
+      "Role-aware dashboard UI",
+      "Database-backed workflows",
+      "Daily reporting views for teams",
+    ],
+  },
+  {
+    title: "Automations and integrations",
+    summary:
+      "API bridges, background jobs, and workflow automation that remove repetitive manual admin work.",
+    outputs: [
+      "Third-party API integrations",
+      "Webhook and scheduled automation flows",
+      "Reliable error handling and retry patterns",
+    ],
+  },
+  {
+    title: "ERP and operations systems",
+    summary:
+      "Lean ERP modules for inventory, orders, finance, CRM, or team operations without buying bloated software.",
+    outputs: [
+      "Tenant-aware data model",
+      "Business process modules",
+      "Audit-friendly mutation and access patterns",
+    ],
+  },
+  {
+    title: "Backend architecture cleanup",
+    summary:
+      "Refactor APIs, databases, and service boundaries so the product is easier to maintain and extend.",
+    outputs: [
+      "Typed API contracts",
+      "Database schema and service-layer review",
+      "Scoped hardening plan for production risk",
+    ],
+  },
+  {
+    title: "Production deployment support",
+    summary:
+      "Ship with realistic deployment, domain, monitoring, and handover steps instead of leaving the project on localhost.",
+    outputs: [
+      "Vercel or server deployment flow",
+      "Domain and environment setup checklist",
+      "Readable handover notes for future iteration",
+    ],
+  },
+];
+
+const deliveryProcess = [
+  {
+    title: "Scope the business workflow",
+    desc: "Map the current process, users, decisions, data sources, and the first useful production slice.",
+  },
+  {
+    title: "Design contracts and data model",
+    desc: "Define API shape, database tables, permissions, and integration boundaries before building screens.",
+  },
+  {
+    title: "Build in weekly increments",
+    desc: "Ship visible milestones quickly while keeping the code typed, reviewable, and easy to extend.",
+  },
+  {
+    title: "Deploy, document, and iterate",
+    desc: "Launch to production, verify the domain and workflows, then use real feedback to plan the next version.",
+  },
+];
+
+const pricingModels = [
+  {
+    name: "Project-Based",
+    desc: "Fixed scope and timeline. Ideal for building an MVP or a specific internal tool.",
+    bestFor: "Building from scratch",
+  },
+  {
+    name: "Retainer / Partnership",
+    desc: "Continuous development and optimization. I act as your technical partner.",
+    bestFor: "Ongoing iterations & ERP maintenance",
+  },
+];
+
+const faqs = [
+  {
+    q: "Do you build custom ERPs?",
+    a: "Yes. I build lean, modular ERP cores tailored to specific business processes without the bloat of generic software.",
+  },
+  {
+    q: "Can you integrate with my existing tools?",
+    a: "Yes. I specialize in API bridges between CRM, finance, marketing, and operations systems.",
+  },
+  {
+    q: "What is your tech stack?",
+    a: "I primarily use TypeScript, Node.js, and Next.js for high-performance, type-safe web applications.",
+  },
+];
+
+export default function EnglishFullstackPage() {
+  const { projects } = getDevPortfolio("en");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: SITE_PROFILE.name,
-    url: `${SITE_PROFILE.adsDomain}/fullstack`,
+    url: `${SITE_PROFILE.adsDomain}/en/fullstack`,
     jobTitle: "Fullstack Development Partner",
     knowsAbout: devStack,
   };
-
-  const outcomes = [
-    {
-      title: "Eliminate Operational Bottlenecks",
-      desc: "Custom internal tools that replace messy spreadsheets and manual data entry.",
-      icon: Zap,
-    },
-    {
-      title: "Consolidated Data & Insights",
-      desc: "Unified dashboards that pull data from various sources for real-time decision making.",
-      icon: Layout,
-    },
-    {
-      title: "Scalable Infrastructure",
-      desc: "Type-safe architectures that grow with your business without constant technical debt.",
-      icon: Server,
-    },
-  ];
-
-  const fullstackServices = [
-    {
-      title: "Business websites that convert",
-      summary:
-        "Fast, credible company sites and landing pages with clear messaging, contact flows, and analytics-ready structure.",
-      outputs: [
-        "Marketing site or campaign landing page",
-        "SEO-ready metadata and page structure",
-        "WhatsApp, email, and lead handoff flow",
-      ],
-    },
-    {
-      title: "Dashboards and internal tools",
-      summary:
-        "Operational dashboards that give owners and teams one reliable place to see status, tasks, and decisions.",
-      outputs: [
-        "Role-aware dashboard UI",
-        "Database-backed workflows",
-        "Daily reporting views for teams",
-      ],
-    },
-    {
-      title: "Automations and integrations",
-      summary:
-        "API bridges, background jobs, and workflow automation that remove repetitive manual admin work.",
-      outputs: [
-        "Third-party API integrations",
-        "Webhook and scheduled automation flows",
-        "Reliable error handling and retry patterns",
-      ],
-    },
-    {
-      title: "ERP and operations systems",
-      summary:
-        "Lean ERP modules for inventory, orders, finance, CRM, or team operations without buying bloated software.",
-      outputs: [
-        "Tenant-aware data model",
-        "Business process modules",
-        "Audit-friendly mutation and access patterns",
-      ],
-    },
-    {
-      title: "Backend architecture cleanup",
-      summary:
-        "Refactor APIs, databases, and service boundaries so the product is easier to maintain and extend.",
-      outputs: [
-        "Typed API contracts",
-        "Database schema and service-layer review",
-        "Scoped hardening plan for production risk",
-      ],
-    },
-    {
-      title: "Production deployment support",
-      summary:
-        "Ship with realistic deployment, domain, monitoring, and handover steps instead of leaving the project on localhost.",
-      outputs: [
-        "Vercel or server deployment flow",
-        "Domain and environment setup checklist",
-        "Readable handover notes for future iteration",
-      ],
-    },
-  ];
-
-  const deliveryProcess = [
-    {
-      title: "Scope the business workflow",
-      desc: "Map the current process, users, decisions, data sources, and the first useful production slice.",
-    },
-    {
-      title: "Design contracts and data model",
-      desc: "Define the API shape, database tables, permissions, and integration boundaries before building screens.",
-    },
-    {
-      title: "Build in weekly increments",
-      desc: "Ship visible milestones quickly while keeping the code typed, reviewable, and easy to extend.",
-    },
-    {
-      title: "Deploy, document, and iterate",
-      desc: "Launch to production, verify the domain and workflows, then use real feedback to plan the next version.",
-    },
-  ];
-
-  const pricingModels = [
-    {
-      name: "Project-Based",
-      desc: "Fixed scope and timeline. Ideal for building MVP or specific internal tools.",
-      bestFor: "Building from scratch",
-    },
-    {
-      name: "Retainer / Partnership",
-      desc: "Continuous development and optimization. I act as your technical partner.",
-      bestFor: "Ongoing iterations & ERP maintenance",
-    },
-  ];
-
-  const faqs = [
-    {
-      q: "Do you build custom ERPs?",
-      a: "Yes, I build lean, modular ERP cores tailored to specific business processes, avoiding the bloat of generic software.",
-    },
-    {
-      q: "Can you integrate with my existing tools?",
-      a: "Absolutely. I specialize in building API bridges between CRM, finance, and marketing systems.",
-    },
-    {
-      q: "What is your tech stack?",
-      a: "I primarily use TypeScript, Node.js, and Next.js for high-performance, type-safe web applications.",
-    },
-  ];
 
   return (
     <>
@@ -165,12 +177,11 @@ export default function FullstackPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="relative min-h-screen z-0">
+      <main lang="en" className="relative min-h-screen z-0">
         <BackgroundLayer />
-        <SiteNavbar locale="id" />
+        <SiteNavbar basePath="/en/fullstack" locale="en" />
 
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-32 sm:px-10 lg:px-14">
-          {/* Hero Section */}
           <header className="mb-24 flex flex-col items-start gap-6 animate-enter">
             <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.75rem] uppercase tracking-wider text-blue-700">
               <Code2 className="mr-2 h-3.5 w-3.5 text-blue-600" />
@@ -185,7 +196,8 @@ export default function FullstackPage() {
             </h1>
 
             <p className="max-w-2xl text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed sm:text-xl">
-              I build the technical engine that runs your business operations. From high-performance customer-facing sites to complex internal management systems.
+              I build the technical engine that runs your business operations, from
+              high-performance customer-facing sites to internal management systems.
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-4">
@@ -211,7 +223,6 @@ export default function FullstackPage() {
             </div>
           </header>
 
-          {/* Outcomes Section */}
           <section id="outcomes" className="mb-24 scroll-mt-24 animate-enter delay-100">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 00_Expected_Outcomes ]
@@ -229,7 +240,6 @@ export default function FullstackPage() {
             </div>
           </section>
 
-          {/* Services Section */}
           <section id="services" className="mb-24 scroll-mt-24">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 01_Services ]
@@ -252,7 +262,6 @@ export default function FullstackPage() {
             </div>
           </section>
 
-          {/* Stack Section */}
           <section id="stack" className="mb-24 scroll-mt-24">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 02_The_Stack ]
@@ -270,13 +279,12 @@ export default function FullstackPage() {
             </InteractiveStackGlow>
           </section>
 
-          {/* Proof Section */}
           <section id="cases" className="mb-24 scroll-mt-24">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 03_Proof from real engineering work ]
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {devProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <article
                   className={`glass-surface-primary p-8 md:p-10 flex flex-col gap-6 group hover:border-blue-400/50 ${index === 0 ? "md:col-span-2" : ""}`}
                   key={project.slug}
@@ -299,7 +307,6 @@ export default function FullstackPage() {
             </div>
           </section>
 
-          {/* Process Section */}
           <section id="process" className="mb-24 scroll-mt-24">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 04_How_We_Work ]
@@ -321,7 +328,6 @@ export default function FullstackPage() {
             </div>
           </section>
 
-          {/* Engagement Models */}
           <section id="engagement" className="mb-24 scroll-mt-24">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 05_Engagement models ]
@@ -339,7 +345,6 @@ export default function FullstackPage() {
             </div>
           </section>
 
-          {/* FAQ Section */}
           <section id="faq" className="mb-24 scroll-mt-24">
             <h2 className="mb-8 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               [ 06_Frequently asked questions ]
@@ -357,7 +362,6 @@ export default function FullstackPage() {
             </div>
           </section>
 
-          {/* Final CTA */}
           <section className="mb-24">
             <GlassPanel className="p-12 text-center bg-blue-600 border-none">
               <h2 className="text-3xl font-bold text-white mb-6">Ready to automate your operations?</h2>
