@@ -7,7 +7,6 @@ import { BackgroundLayer } from "@/components/BackgroundLayer";
 import { ContactButton } from "@/components/ContactButton";
 import { GlassButton } from "@/components/GlassButton";
 import { GlassPanel } from "@/components/GlassPanel";
-import { InteractiveStackGlow } from "@/components/InteractiveStackGlow";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SITE_PROFILE } from "@/data/site";
 import { STACK, homeCopy, type Service, type Blueprint } from "@/data/home";
@@ -82,34 +81,60 @@ export function HomePageContent({ locale }: { locale: Locale }) {
 
         <div className="mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-8 sm:pt-16 lg:px-10">
 
-          {/* ── HERO ─────────────────────────────────────────────────── */}
+                    {/* ── HERO ─────────────────────────────────────────────────── */}
           <header className="animate-enter mb-20 sm:mb-28">
-            {/* Badge — compact single line */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 font-mono text-[0.72rem] font-bold uppercase tracking-wider text-blue-800 dark:border-blue-800/60 dark:bg-blue-950/50 dark:text-blue-300">
-              <Code2 className="h-3.5 w-3.5" />
-              {t.badge}
-            </div>
+            <div className="grid items-center gap-10 lg:grid-cols-[1fr_260px]">
+              {/* Left: copy */}
+              <div>
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 font-mono text-[0.72rem] font-bold uppercase tracking-wider text-blue-800 dark:border-blue-800/60 dark:bg-blue-950/50 dark:text-blue-300">
+                  <Code2 className="h-3.5 w-3.5" />
+                  {t.badge}
+                </div>
 
-            {/* Headline */}
-            <h1 className="mb-5 max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
-              {t.headingLead}
-              <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-300 dark:to-emerald-300">
-                {t.headingEmphasis}
-              </span>
-            </h1>
+                <h1 className="mb-5 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+                  {t.headingLead}
+                  <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-300 dark:to-emerald-300">
+                    {t.headingEmphasis}
+                  </span>
+                </h1>
 
-            {/* Subline */}
-            <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-              {t.summary}
-            </p>
+                <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-700 dark:text-slate-300">
+                  {t.summary}
+                </p>
 
-            {/* Two CTAs max */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <ContactButton isHero locale={locale} />
-              <GlassButton className="justify-center" href="#layanan">{t.ctaSecondary}</GlassButton>
-              <GlassButton className="justify-center" href={SITE_PROFILE.linkedInUrl} target="_blank" rel="noreferrer">
-                <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
-              </GlassButton>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                  <ContactButton isHero locale={locale} />
+                  <GlassButton className="justify-center" href="#layanan">{t.ctaSecondary}</GlassButton>
+                </div>
+              </div>
+
+              {/* Right: foto kecil + identitas — hanya desktop */}
+              <div className="hidden lg:block">
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-900">
+                  <Image
+                    src="/khusnudhoni-formal.jpg"
+                    alt="Khusnudhoni — Software Developer & Digital Marketer"
+                    width={900}
+                    height={900}
+                    priority
+                    sizes="260px"
+                    className="w-full object-cover object-top dark:brightness-90"
+                    style={{ aspectRatio: "4/5" }}
+                  />
+                  <div className="px-4 py-3 border-t border-slate-100 dark:border-slate-800">
+                    <p className="font-bold text-slate-900 dark:text-white text-sm">{SITE_PROFILE.name}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Software Dev × Digital Marketer</p>
+                    <a
+                      href={SITE_PROFILE.linkedInUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 transition-colors"
+                    >
+                      <Linkedin className="h-3.5 w-3.5" /> LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </header>
 
