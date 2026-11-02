@@ -99,7 +99,7 @@ export function FullstackPageContent({ locale }: FullstackPageContentProps) {
 
                 return (
                   <GlassPanel key={item.title} className="p-8 flex flex-col gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <div className="h-10 w-10 rounded-lg bg-blue-50 dark:bg-slate-800 flex items-center justify-center">
                       <Icon className="h-5 w-5 text-blue-600" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
@@ -168,7 +168,7 @@ export function FullstackPageContent({ locale }: FullstackPageContentProps) {
                   key={project.slug}
                 >
                   <div className="flex flex-col gap-2">
-                    <span className="font-mono text-blue-700 font-bold text-xs">/project_{index + 1}</span>
+                    <span className="font-mono text-blue-700 dark:text-blue-300 font-bold text-xs">/project_{index + 1}</span>
                     <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">{project.title}</h3>
                   </div>
                   <p className="text-slate-900 dark:text-slate-100 text-sm leading-relaxed">{project.shortDescription}</p>
@@ -192,7 +192,7 @@ export function FullstackPageContent({ locale }: FullstackPageContentProps) {
             <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
               {t.fullstack.process.map((step, index) => (
                 <GlassPanel key={step.title} className="p-6">
-                  <span className="font-mono text-[0.65rem] uppercase tracking-widest text-blue-700">
+                  <span className="font-mono text-[0.65rem] uppercase tracking-widest text-blue-700 dark:text-blue-300">
                     {t.fullstack.phaseLabel(index)}
                   </span>
                   <h3 className="mt-4 text-lg font-bold text-slate-900 dark:text-slate-100">
@@ -215,7 +215,7 @@ export function FullstackPageContent({ locale }: FullstackPageContentProps) {
                 <GlassPanel key={model.name} className="p-8 border-l-4 border-l-blue-500">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">{model.name}</h3>
                   <p className="text-slate-900 dark:text-slate-100 text-sm mb-4 leading-relaxed">{model.desc}</p>
-                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[0.65rem] font-mono uppercase tracking-widest rounded-full">
+                  <span className="inline-block px-3 py-1 bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-300 text-[0.65rem] font-mono uppercase tracking-widest rounded-full">
                     {t.fullstack.bestForLabel} {model.bestFor}
                   </span>
                 </GlassPanel>
@@ -241,7 +241,7 @@ export function FullstackPageContent({ locale }: FullstackPageContentProps) {
           </section>
 
           <section className="mb-24">
-            <GlassPanel className="p-12 text-center bg-blue-600 border-none">
+            <GlassPanel className="p-12 text-center bg-blue-600! border-none">
               <h2 className="text-3xl font-bold text-white mb-6">{t.fullstack.finalTitle}</h2>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <GlassButton
@@ -264,7 +264,7 @@ export function FullstackPageContent({ locale }: FullstackPageContentProps) {
             </GlassPanel>
           </section>
 
-          <footer className="mt-24 border-t border-gray-300 pt-8 flex items-center justify-between text-xs text-slate-900 dark:text-slate-100 font-mono">
+          <footer className="mt-24 border-t border-gray-300 dark:border-slate-800 pt-8 flex items-center justify-between text-xs text-slate-900 dark:text-slate-100 font-mono">
             <p>{SITE_PROFILE.name} &copy; {new Date().getFullYear()}</p>
             <p className="flex items-center gap-2">
               <Settings className="h-3.5 w-3.5 animate-spin-slow" />

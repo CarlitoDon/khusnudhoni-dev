@@ -16,7 +16,7 @@ export function ContactButton({ isHero, locale = "id" }: ContactButtonProps) {
   const labels = {
     id: {
       hero: "Chat via WhatsApp",
-      compact: "Contact",
+      compact: "Hubungi",
     },
     en: {
       hero: "Chat via WhatsApp",

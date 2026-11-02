@@ -74,7 +74,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const requestHeaders = await headers();
-  const locale = resolveLocale(requestHeaders.get("x-active-locale"));
+  const locale = resolveLocale(requestHeaders.get("x-locale"));
 
   return (
     <html lang={locale} suppressHydrationWarning>

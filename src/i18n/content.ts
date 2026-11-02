@@ -409,9 +409,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     home: {
       metadata: {
-        title: "Khusnudhoni | Portfolio Growth & Technical Marketing",
+        title: "Software Developer & Digital Marketer",
         description:
-          "Portfolio Khusnudhoni untuk growth marketing, backend engineering, dan fullstack web development.",
+          "Jasa pembuatan website, aplikasi, e-commerce, SEO, dan iklan Meta, Google, TikTok, Shopee. Software developer dan digital marketer dalam satu orang.",
         keywords: [
           "growth marketing",
           "technical marketing",
@@ -912,9 +912,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     home: {
       metadata: {
-        title: "Khusnudhoni | Growth & Technical Marketing Portfolio",
+        title: "Software Developer & Digital Marketer",
         description:
-          "Khusnudhoni portfolio for growth marketing, backend engineering, and fullstack web development.",
+          "Websites, apps, e-commerce, SEO, and Meta, Google, TikTok, Shopee ads. Software developer and digital marketer in one person.",
         keywords: [
           "growth marketing",
           "technical marketing",

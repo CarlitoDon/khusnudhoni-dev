@@ -37,12 +37,12 @@ export function DevPageContent({ locale }: DevPageContentProps) {
 
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-32 sm:px-10 lg:px-14">
           <header className="mb-24 flex flex-col items-start gap-6 animate-enter">
-            <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.75rem] uppercase tracking-wider text-blue-700">
+            <div className="magic-badge inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.75rem] uppercase tracking-wider text-blue-700 dark:text-blue-300">
               <Server className="mr-2 h-3.5 w-3.5 text-blue-600" />
               {t.dev.intro.roleLabel}
             </div>
 
-            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-black">
+            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-slate-100">
               {t.dev.intro.headingLead}
               <span className="title-gradient font-extrabold italic pr-2">
                 {t.dev.intro.headingEmphasis}
@@ -50,7 +50,7 @@ export function DevPageContent({ locale }: DevPageContentProps) {
               {t.dev.intro.headingTail}
             </h1>
 
-            <p className="max-w-2xl text-lg text-black leading-relaxed sm:text-xl">
+            <p className="max-w-2xl text-lg text-slate-900 dark:text-slate-100 leading-relaxed sm:text-xl">
               {t.dev.intro.summary}
             </p>
 
@@ -76,13 +76,13 @@ export function DevPageContent({ locale }: DevPageContentProps) {
               </GlassButton>
             </div>
 
-            <div className="w-full sm:w-auto rounded-2xl border border-white/70 bg-white/60 px-4 py-3 backdrop-blur-sm">
-              <p className="font-mono text-[0.62rem] sm:text-[0.7rem] uppercase tracking-wider text-blue-700">
+            <div className="w-full sm:w-auto rounded-2xl border border-white/70 bg-white/60 dark:border-slate-700 dark:bg-slate-900/60 px-4 py-3 backdrop-blur-sm">
+              <p className="font-mono text-[0.62rem] sm:text-[0.7rem] uppercase tracking-wider text-blue-700 dark:text-blue-300">
                 {t.dev.emailEyebrow}
               </p>
               <a
                 href={`mailto:${SITE_PROFILE.email}`}
-                className="mt-1 inline-block font-mono text-xs sm:text-sm text-black underline decoration-blue-500/60 underline-offset-4 hover:text-blue-700 transition-colors"
+                className="mt-1 inline-block font-mono text-xs sm:text-sm text-slate-900 dark:text-slate-100 underline decoration-blue-500/60 underline-offset-4 hover:text-blue-700 dark:text-blue-300 transition-colors"
               >
                 {SITE_PROFILE.email}
               </a>
@@ -93,13 +93,13 @@ export function DevPageContent({ locale }: DevPageContentProps) {
             id="about"
             className="mb-24 scroll-mt-24 animate-enter delay-100"
           >
-            <h2 className="mb-4 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-4 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               {t.dev.aboutLabel}
             </h2>
             <GlassPanel className="p-8 md:p-10">
               <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
-                <div className="flex-1 space-y-4 text-black leading-relaxed text-sm md:text-base">
-                  <h3 className="text-2xl font-bold text-black">
+                <div className="flex-1 space-y-4 text-slate-900 dark:text-slate-100 leading-relaxed text-sm md:text-base">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                     {SITE_PROFILE.name}
                   </h3>
                   {t.dev.intro.about.map((paragraph) => (
@@ -107,15 +107,15 @@ export function DevPageContent({ locale }: DevPageContentProps) {
                   ))}
                 </div>
 
-                <div className="hidden lg:block w-px bg-gray-200 self-stretch" />
+                <div className="hidden lg:block w-px bg-gray-200 dark:bg-slate-700 self-stretch" />
 
                 <div className="w-full lg:w-64 flex flex-col gap-5 text-sm">
                   {t.dev.sideFacts.map((fact) => (
                     <div key={fact.label}>
-                      <span className="font-mono text-blue-700 font-bold block mb-1 text-xs uppercase tracking-wider">
+                      <span className="font-mono text-blue-700 dark:text-blue-300 font-bold block mb-1 text-xs uppercase tracking-wider">
                         {fact.label}
                       </span>
-                      <span className="text-black">{fact.value}</span>
+                      <span className="text-slate-900 dark:text-slate-100">{fact.value}</span>
                     </div>
                   ))}
                 </div>
@@ -124,7 +124,7 @@ export function DevPageContent({ locale }: DevPageContentProps) {
           </section>
 
           <section id="cases" className="mb-24 scroll-mt-24">
-            <h2 className="mb-4 text-sm font-mono tracking-widest text-black uppercase animate-enter delay-200">
+            <h2 className="mb-4 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase animate-enter delay-200">
               {t.dev.casesLabel}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 relative z-10 animate-enter delay-300">
@@ -134,19 +134,19 @@ export function DevPageContent({ locale }: DevPageContentProps) {
                   key={project.slug}
                 >
                   <div className="flex flex-col gap-2">
-                    <span className="font-mono text-blue-700 font-bold text-xs">
+                    <span className="font-mono text-blue-700 dark:text-blue-300 font-bold text-xs">
                       /project_{index + 1}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-black group-hover:text-blue-700 transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
                       {project.title}
                     </h3>
                   </div>
 
-                  <p className="text-black text-sm md:text-base leading-relaxed">
+                  <p className="text-slate-900 dark:text-slate-100 text-sm md:text-base leading-relaxed">
                     {project.shortDescription}
                   </p>
-                  <p className="text-black text-sm md:text-base leading-relaxed">
-                    <span className="font-semibold text-black">{t.dev.roleLabel}</span>{" "}
+                  <p className="text-slate-900 dark:text-slate-100 text-sm md:text-base leading-relaxed">
+                    <span className="font-semibold text-slate-900 dark:text-slate-100">{t.dev.roleLabel}</span>{" "}
                     {project.role}
                   </p>
 
@@ -161,7 +161,7 @@ export function DevPageContent({ locale }: DevPageContentProps) {
           </section>
 
           <section id="stack" className="animate-enter delay-300 scroll-mt-24">
-            <h2 className="mb-6 text-sm font-mono tracking-widest text-black uppercase">
+            <h2 className="mb-6 text-sm font-mono tracking-widest text-slate-900 dark:text-slate-100 uppercase">
               {t.dev.stackLabel}
             </h2>
             <InteractiveStackGlow>
@@ -177,7 +177,7 @@ export function DevPageContent({ locale }: DevPageContentProps) {
             </InteractiveStackGlow>
           </section>
 
-          <footer className="mt-24 border-t border-gray-300 pt-8 flex items-center justify-between text-xs text-black font-mono animate-enter delay-400">
+          <footer className="mt-24 border-t border-gray-300 dark:border-slate-800 pt-8 flex items-center justify-between text-xs text-slate-900 dark:text-slate-100 font-mono animate-enter delay-400">
             <p>
               {SITE_PROFILE.name} &copy; {new Date().getFullYear()}
             </p>

@@ -24,10 +24,7 @@ function requestWithLocaleHeader(request: NextRequest) {
   const locale = getLocaleFromPathname(request.nextUrl.pathname);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-locale", locale);
-  return {
-    ...request,
-    headers: requestHeaders,
-  };
+  return { request: { headers: requestHeaders } };
 }
 
 export function proxy(request: NextRequest) {

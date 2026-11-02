@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { X, Send, MessageCircle } from "lucide-react";
+import { X, Send } from "lucide-react";
 import { SITE_PROFILE } from "@/data/site";
-import { getDictionary } from "@/i18n/content";
-import { getLocaleFromPathname } from "@/i18n/routing";
 import { GlassButton } from "./GlassButton";
 import { getLocaleFromPath, type Locale } from "@/lib/i18n";
 
@@ -189,6 +187,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               variant="primary"
               className="w-full justify-center py-3 text-sm font-bold"
             >
+              {copy[locale].submit}
               <Send className="w-4 h-4 ml-2 opacity-70" />
             </GlassButton>
           </div>
