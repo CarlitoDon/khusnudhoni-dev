@@ -21,6 +21,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    shortcut: "/icon.png",
+  },
   metadataBase: new URL(SITE_PROFILE.adsDomain),
   title: {
     default: `${SITE_PROFILE.name} | Portfolio`,
@@ -79,7 +87,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${sora.variable} ${ibmPlexMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <ContactModalProvider>
             <BackdropCapabilityProbe />
             <ScrollBehaviorFix />
